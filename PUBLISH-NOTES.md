@@ -1,4 +1,4 @@
-# Where we left off — suggestions form ✅ DONE, publishing (PAUSED)
+# Status — Ideas Engine ✅, GitHub Pages ✅ (manual test passes pending)
 
 Notes so we can pick up exactly where we stopped.
 
@@ -48,40 +48,30 @@ Notes so we can pick up exactly where we stopped.
 - **User's test pass (pending):** click each row → instant apply + ✓ moves;
   dials/animation colors follow; Reset all → Calm; reload → persists.
 
-## 2. GitHub Pages hosting — paused at the install question
+## 2. GitHub Pages hosting — DONE ✅ (live)
 
-**Goal:** host the app and send out one link. User does not want to use
-GitHub's website UI — I drive everything; they only sign in once.
+**Live URL: `https://swankymcgee.github.io/work-cycle-timer/`**
+**Repo: `https://github.com/SwankyMcGee/work-cycle-timer`** (public)
 
-**Decided so far:**
-- Google Sites **cannot** host the app itself (it's a page builder, not a
-  general host — no scripts/multi-file/audio). It can only embed or link to
-  something hosted elsewhere. → GitHub Pages is the chosen path.
-- Repo must be **public** (free-plan requirement for Pages) — fine, the point
-  is a shareable link.
-- `Backup\` folder must be excluded (`.gitignore`: `Backup/`) so the old copy
-  isn't published at `/Backup/`.
-- Repo name: `work-cycle-timer`, source = branch `main`, root (`/`).
+How it went (2026-11-11):
+- `gh` 2.103.3 installed via winget — the MSI needed **one UAC prompt**,
+  which the user accepted; gh lives at `C:\Program Files\GitHub CLI\gh.exe`
+  (new shells see it on PATH)
+- Auth: `gh auth login --web` device flow — user authorized in a console
+  window; account **SwankyMcGee**
+- Repo created with `gh repo create work-cycle-timer --public --source=. --push`
+- `.gitignore` = `Backup/` (first attempt failed silently — `Out-File -Path`
+  is invalid, it's `-FilePath` — caught it, amended the commit; final push
+  = 14 files, no Backup, ~27 MB of WAVs included)
+- Pages enabled via `gh api .../pages -X POST -f source[branch]=main -f source[path]=/`,
+  first build reached **built**; live URL verified serving the whole app
+- Git identity is **repo-local** only: user.name = SwankyMcGee,
+  user.email = SwankyMcGee@users.noreply.github.com
 
-**Machine state (verified):**
-- `git` 2.55.0 ✓ · `winget` 1.29.380 ✓ · **`gh` (GitHub CLI) NOT installed ✗**
-- Project ≈ 27 MB live (five WAVs, 4–6.4 MB each) — well within GitHub limits
-  (100 MB/file) and Pages (1 GB).
+**Shipping an update (I drive it, from the project folder):**
+`git add -A` → `git commit -m "..."` → `git push`
+Pages rebuilds automatically (~1 min). Check with
+`gh api repos/SwankyMcGee/work-cycle-timer/pages/builds/latest`.
 
-**Open question the user paused on:** OK to install the GitHub CLI per-user
-via winget (no admin, ~10 MB, uninstall anytime)?
-- **If yes:** `winget install --id GitHub.cli --accept-package-agreements --accept-source-agreements`
-- **If no installs:** automate github.com in the in-app browser instead
-  (user signs in; I click through repo creation, file upload in ≤5 MiB
-  batches, then Settings → Pages).
-
-**Full plan once resumed:**
-1. Install `gh` (or fall back to browser automation)
-2. `gh auth login` device flow — user does **one** browser authorization
-   (or signs up for an account if they don't have one)
-3. `git init` in the project folder + `.gitignore` (`Backup/`) + commit
-4. `gh repo create work-cycle-timer --public --source=. --push`
-5. `gh api repos/{owner}/work-cycle-timer/pages -X POST -f source[branch]=main -f source[path]=/`
-6. Poll `gh api repos/{owner}/work-cycle-timer/pages/builds/latest` until built
-7. Open the live URL, verify the app loads (hold-gear, timers, playlist),
-   hand the link over
+**Still to verify:** open the live link once on the school network
+(github.io may or may not be filtered — same check we did for docs.google.com).
