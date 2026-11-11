@@ -75,3 +75,23 @@ Pages rebuilds automatically (~1 min). Check with
 
 **Still to verify:** open the live link once on the school network
 (github.io may or may not be filtered — same check we did for docs.google.com).
+
+## 3. NEXT THREAD — staff training materials
+
+**The brief exists and is current:** `STAFF-TRAINING-PROMPT.md` (16 headings,
+7 sections) — it's written as a *prompt for building* the training materials:
+1. What the app is · 2. Who the training is for · 3. Complete feature
+reference (exact, never invent) · 4. Sensory-friendly design principles to
+apply to the materials · **5. Deliverables — "confirm this set with me
+before building"** · 6. Ground rules · 7. Source files.
+
+**Where to resume:** Section 5 (deliverables) has never been confirmed with
+the user — start there: agree the deliverable set, then build. The feature
+reference (§3) was kept in sync today with palettes, playlist, Ideas Engine
+and animation reactivity, so it's safe to build from.
+
+**App state at pause:** live at
+`https://swankymcgee.github.io/work-cycle-timer/`; working tree clean;
+updates ship via `git add -A` → `commit` → `push` (auto-rebuild ~1 min).
+User's pending manual test passes: palettes, animation reactivity, form
+click-through (all testable on the live link).
