@@ -2,10 +2,13 @@
 
 > **STATUS (November 2026): §5 confirmed and built ✅** — all six deliverables
 > (quick-start, user guide, settings reference, troubleshooting, scenarios,
-> glossary) confirmed as **hosted pages on the live site** (print-friendly),
-> staff open the app by **link only**, plus a **home chooser page** (`index.html`
-> → Tools / Resources hubs). Built under the §6 ground rules: exact wording,
-> holds with durations, dated November 2026. Remaining: push + user test pass.
+> glossary) confirmed as **hosted pages** (print-friendly), staff open the app
+> by **link only**. **Hosted in the separate `SwankyMcGee.github.io` repo at
+> `https://swankymcgee.github.io/`** (home chooser → Tools / Resources hubs),
+> after the 2026-11-12 repo split; the app itself stays in the `work-cycle-timer`
+> repo at `https://swankymcgee.github.io/work-cycle-timer/timer.html`.
+> Built under the §6 ground rules: exact wording, holds with durations, dated
+> November 2026. Remaining: push + user test pass.
 
 You are an instructional designer creating training materials that teach school
 staff to use the **Work Cycle Timer** app confidently. You have no other context
@@ -29,7 +32,7 @@ something concrete and visual (the same idea as a Time Timer's shrinking disk).
   block that motivates work — used for class routines, individual targets,
   transitions, and sensory-friendly classrooms
 
-**How it runs:** pure HTML/CSS/JS. Double-click `index.html` — opens in
+**How it runs:** pure HTML/CSS/JS. Double-click `timer.html` — opens in
 Chrome/Edge/Firefox. No install, no admin rights, no internet, no network
 calls. Settings persist in the browser's `localStorage` **on that machine
 only**. Suitable for IT-managed school laptops.
@@ -215,7 +218,7 @@ the tone allows — it is not required knowledge.
 
 ## 7. Source files (if you need to verify behavior)
 
-The app lives beside this prompt: `index.html` (structure), `styles.css`
+The app lives beside this prompt: `timer.html` (structure), `styles.css`
 (themes/layout), `app.js` (timer engine, settings, sound, media),
 `media/playlist.js` (track list), `README.md` (full documentation plus the
 research notes and GitHub Pages deployment notes).

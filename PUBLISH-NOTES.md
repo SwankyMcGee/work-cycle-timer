@@ -64,6 +64,22 @@ link still lands somewhere useful (one click to the timer). Same origin, so
 existing localStorage settings survive the move. User guide, scenarios and
 troubleshooting were compacted at the same time.
 
+**Repo split (2026-11-12, per user):** since more tools are coming, the
+site is now **two repos on one domain**:
+
+- **`SwankyMcGee/SwankyMcGee.github.io`** (new, local folder
+  `Vibe Coding Projects\SwankyMcGee.github.io`) → **`https://swankymcgee.github.io/`**
+  — the base site: chooser, `tools.html`, `resources.html`, the six staff
+  guides, `site.css`. User site = root URL, no project name in the path.
+- **`SwankyMcGee/work-cycle-timer`** (this repo) → keeps the **app only**:
+  `https://swankymcgee.github.io/work-cycle-timer/timer.html`. Its root
+  `index.html` is now a **redirect stub into `timer.html`**, so the old
+  `/work-cycle-timer/` URL takes people straight to the app (user's choice:
+  old URL → the work-cycle-timer repo, not the menu).
+- Same origin (`swankymcgee.github.io`) → saved settings carry across.
+- Site pages were `git rm`'d from this repo after copying to the base repo;
+  app.js/timer.html never referenced them (verified by grep).
+
 How it went (2026-11-11):
 - `gh` 2.103.3 installed via winget — the MSI needed **one UAC prompt**,
   which the user accepted; gh lives at `C:\Program Files\GitHub CLI\gh.exe`

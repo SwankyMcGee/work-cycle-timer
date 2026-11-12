@@ -22,29 +22,24 @@ Everything (settings, theme, sounds, your music playlist — order, repeat mode 
 added music files) is remembered between launches via the browser's local storage
 and IndexedDB. Nothing is ever sent over the network.
 
-## Website (GitHub Pages)
+## Website (GitHub Pages — two repos, one domain)
 
-**Live: `https://swankymcgee.github.io/work-cycle-timer/`** — publishing is
-driven locally (`git add -A` → `commit` → `push`; Pages rebuilds in ~1 min).
+The site is split so each part changes independently:
 
-| Page | What it is |
-|---|---|
-| `index.html` | Home — just a chooser: **Tools** or **Resources** |
-| `tools.html` | Tools hub — timer card + Ideas Engine card |
-| `resources.html` | Resources hub — the six staff-resource cards |
-| `timer.html` | **The app** (`https://…/work-cycle-timer/timer.html`) |
-| `quick-start.html` | One-page start-here for staff |
-| `user-guide.html` | Full task-based guide, organised by settings tab |
-| `settings-ref.html` | Every setting: location, default, behavior |
-| `troubleshooting.html` | Symptom → fix FAQ |
-| `scenarios.html` | Four walkthroughs: standard day, 3 cycles, calm sensory, silent room |
-| `glossary.html` | Plain-language terms |
-| `site.css` | Shared styling + print styles for all site pages |
+| Repo | URL | Contains |
+|---|---|---|
+| `SwankyMcGee/SwankyMcGee.github.io` | **`https://swankymcgee.github.io/`** | The base site: home chooser (`index.html`), `tools.html`, `resources.html` hubs, the six staff-resource pages, `site.css` |
+| `SwankyMcGee/work-cycle-timer` (this repo) | `https://swankymcgee.github.io/work-cycle-timer/` | **The app.** Its root redirects to `timer.html`, so the app lives at **`https://swankymcgee.github.io/work-cycle-timer/timer.html`** |
 
-The old root link (`…/work-cycle-timer/`) still works — it now lands on the
-home menu, one click from the timer. All staff materials deep-link to
-`timer.html` and are print-friendly (Ctrl+P → clean paper output). Materials
-are dated **November 2026** to match the app's state.
+Both are on the same `swankymcgee.github.io` domain — same origin, so the
+app's saved settings carry across. Publishing is driven locally
+(`git add -A` → `commit` → `push`; Pages rebuilds in ~1 min) — in whichever
+repo you changed.
+
+Base-site pages (all print-friendly, Ctrl+P → clean paper output, dated
+**November 2026**): quick start · user guide · settings reference ·
+troubleshooting · scenarios · glossary. The old root link
+(`…/work-cycle-timer/`) still works — it redirects straight into the timer.
 
 ## The cycle
 
@@ -260,17 +255,15 @@ Built on established visual-timer practice for autistic users:
 ## Files
 
 ```
-index.html        home — chooser (Tools / Resources)
-tools.html        tools hub (timer + Ideas Engine cards)
-resources.html    resources hub (six staff-resource cards)
+index.html        redirect stub → timer.html (site menu moved to the base repo)
 timer.html        the app — page structure
 styles.css        themes, layout, animations (app)
-site.css          shared styling + print styles (site pages)
 app.js            timer engine, settings, sound, media
-quick-start.html  staff resource pages (also: user-guide, settings-ref,
-user-guide.html   troubleshooting, scenarios, glossary)
 media/            sensory music (5 built-in loops) + drop extra videos/music here
 media/playlist.js media list the app reads
 tools/            script that generates the built-in loops
 README.md         this file
 ```
+
+The site pages (chooser, hubs, six staff guides, `site.css`) live in the
+separate `SwankyMcGee.github.io` repo — see the Website section above.
