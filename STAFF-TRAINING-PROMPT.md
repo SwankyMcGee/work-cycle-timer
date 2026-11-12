@@ -52,8 +52,8 @@ only**. Suitable for IT-managed school laptops.
 ### Main screen
 
 - **Header:** editable title (small embossed pencil button beside it — click to
-  edit, Enter saves, Esc cancels; persists across loads), a **music bar**, and
-  the **settings gear**
+  edit, Enter saves, Esc cancels; persists across loads), a **music bar**, a
+  **⛶ fullscreen button**, a **🏠 home button**, and the **settings gear**
 - **Two timer cards:** Work and Earn. Active card is bright; the other is
   dimmed. Each shows the dial, remaining time, a status word
   (Ready / Running / Paused / Time's up) and the total ("of 10:00")
@@ -71,6 +71,7 @@ nothing (this stops accidental brushes by students):
 |---|---|
 | Start / Pause / Resume, Skip →, Reset | **1 second** |
 | Music: ⏮ previous, ▶ play/pause, ⏭ next | **1 second** |
+| Fullscreen ⛶ (header, before 🏠) | **1 second** |
 | Home 🏠 (header, between the music bar and the gear) — opens the site's home page | **1 second** |
 | Settings gear (top-right) | **3 seconds** |
 
@@ -124,7 +125,9 @@ For classes that do several work blocks before a break:
   card, text, both dial colors); click a row to apply it instantly, the current
   one is highlighted with a ✓ (**Calm** default; then Lavender, Mint, Peach,
   Rose, Ocean, Low contrast, High contrast, Dark, Midnight, Warm dark) ·
-  layout: side-by-side (default) or one timer at a time
+  layout: side-by-side (default) or one timer at a time. The same eleven
+  palettes are on every site page under its 🎨 **Palette** header button, and
+  the choice is remembered across pages and the timer alike
 - **Media:** built-in **sensory animation** — Floating bubbles, Drifting soft
   glow, Slow waves, Gentle rain (drops fall with gravity and splash), with an
   opacity slider · **Animation reactivity** — Off / Gentle (default) /

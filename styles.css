@@ -407,6 +407,31 @@ body.flash-enabled.flash-active .flash-overlay {
 /* Header 🏠 home button — same box as the gear, but a 1-second hold */
 .home-btn { --hold-dur: 1s; }
 
+/* Header ⛶ fullscreen button — also a 1-second hold */
+.fs-btn { --hold-dur: 1s; }
+
+/* ---------- Fullscreen ----------
+   ⛶ expands the whole tool to the screen: the app drops its width cap,
+   the stack centers vertically, and the dials grow into the space. */
+
+:fullscreen .app,
+:-webkit-full-screen .app {
+  width: 100%;
+  max-width: none;
+  justify-content: center;
+  padding: 1rem clamp(1rem, 3vw, 2.5rem) 1.5rem;
+}
+
+:fullscreen .timer-card,
+:-webkit-full-screen .timer-card {
+  max-width: 640px;
+}
+
+:fullscreen .dial-wrap,
+:-webkit-full-screen .dial-wrap {
+  width: min(36vw, 46vh, 520px);
+}
+
 .hold-track {
   position: absolute;
   left: 7px;

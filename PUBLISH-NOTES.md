@@ -126,6 +126,38 @@ Pages rebuilds automatically (~1 min). Check with
 **Still to verify:** open the live link once on the school network
 (github.io may or may not be filtered — same check we did for docs.google.com).
 
+## 5. Fullscreen + shared palette — 2026-11-12
+
+- **Fullscreen (header ⛶, hold 1 s):** `toggleFullscreen()` runs the
+  Fullscreen API on `document.documentElement` (webkit fallbacks included);
+  `:fullscreen` CSS drops the width cap, centers the stack and grows the
+  dials (`min(36vw, 46vh, 520px)`). On enter, best-effort
+  `screen.orientation.lock('landscape')` — Android Chrome only; desktop
+  and iOS ignore the lock but fullscreen itself still works. Unlocked on
+  any exit including Esc (`fullscreenchange` → `syncFullscreenUi()` swaps
+  the ⛶/exit icons, `title` and `aria-label`). Wired with
+  `makeHoldable($('fsBtn'), 1000, …)`.
+- **Shared palette on every page and tool:** new `site.js` (base repo)
+  reads/writes the same `workCycleTimer.settings.v1` key (field `theme`),
+  applies `html[data-theme]` **before first paint** (no flash), and
+  injects a 🎨 **Palette** button + 11-palette panel into every site
+  header. `site.css` gained 11 `html[data-theme]` blocks mirroring the
+  app's values (mapped: `--dim` ← `--text-dim`, `--why-*` ←
+  surface-2/border, `--hold-*` ← `--warn-*`) plus picker styles and a
+  gentle body background/color transition. Writes are read-patch-write so
+  the timer's other settings are never clobbered. Both sides listen for
+  `storage` events → picking a palette in the timer updates open site
+  pages live, and vice versa. `THEMES` in `site.js` must stay identical
+  to `THEMES` in `app.js` (noted in both files; base README's
+  "Adding a tool" recipe step 4 covers new pages).
+- Materials updated (base repo): settings-ref (⛶ rows in the hold and
+  header tables, shared-palette note on Color theme), user guide (hold
+  callout, opening step, Color theme bullet, ⛶ header bullet), README
+  (`site.js` row + recipe step). Training brief §3 (timer repo): header
+  bullet, hold-table row, Display shared-palette note.
+- Balance check passed: app.js 379/379 braces, 1628/1628 parens;
+  site.js 33/33 braces, 103/103 parens.
+
 ## 3. Staff training materials — BUILT ✅ (hosted; test pass pending)
 
 **Confirmed with the user:** the full §5 gamut — all six deliverables, as

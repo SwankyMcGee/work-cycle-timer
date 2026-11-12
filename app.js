@@ -1346,6 +1346,17 @@ function syncThemePicker() {
 
 renderThemePicker();
 
+/* A site page's header picker (site.js) changed the shared palette —
+   follow it live without re-saving (the other tab already wrote). */
+window.addEventListener('storage', (e) => {
+  if (e.key !== STORAGE_KEY) return;
+  const t = loadSettings().theme;   // re-read + validate against THEMES
+  if (t === settings.theme) return;
+  settings.theme = t;
+  document.body.dataset.theme = t;
+  syncThemePicker();
+});
+
 /* ---------- Background media ----------
    Videos are session-only (blob URLs die with the page). Music is a
    playlist: every track has a key — built-ins are keyed by their src,
@@ -1937,6 +1948,67 @@ makeHoldable($('resetBtn'), 1000, onReset);
 makeHoldable($('skipBtn'), 1000, onSkip);
 makeHoldable($('homeBtn'), 1000, () => { window.location.href = HOME_URL; });
 makeHoldable(gearBtn, 3000, openSettings);
+
+/* ---------- Fullscreen (header ⛶, hold 1 s) ----------
+   Fills the screen with the tool (the :fullscreen rules in styles.css
+   center it and grow the dials). On phones we also try to force
+   landscape; desktop and iOS ignore the lock — fullscreen itself
+   still works wherever the API exists. */
+
+function isFullscreen() {
+  return !!(document.fullscreenElement || document.webkitFullscreenElement);
+}
+
+function forceLandscape() {
+  try {
+    const o = window.screen && window.screen.orientation;
+    if (o && typeof o.lock === 'function') {
+      const p = o.lock('landscape');
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    }
+  } catch (err) { /* not supported on this device */ }
+}
+
+function unlockOrientation() {
+  try {
+    const o = window.screen && window.screen.orientation;
+    if (o && typeof o.unlock === 'function') o.unlock();
+  } catch (err) { /* not supported on this device */ }
+}
+
+function toggleFullscreen() {
+  if (!isFullscreen()) {
+    const el = document.documentElement;
+    const req = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (!req) return;
+    try {
+      const p = req.call(el);
+      if (p && typeof p.then === 'function') p.then(forceLandscape).catch(() => {});
+    } catch (err) { /* denied */ }
+  } else {
+    const exitFs = document.exitFullscreen || document.webkitExitFullscreen;
+    try { if (exitFs) exitFs.call(document); } catch (err) { /* ignore */ }
+  }
+}
+
+function syncFullscreenUi() {
+  const on = isFullscreen();
+  const enter = $('fsEnterIcon');
+  const exit = $('fsExitIcon');
+  if (enter) enter.style.display = on ? 'none' : '';
+  if (exit) exit.style.display = on ? '' : 'none';
+  const btn = $('fsBtn');
+  btn.title = on ? 'Hold for 1 second to leave fullscreen'
+                 : 'Hold for 1 second to fill the screen';
+  btn.setAttribute('aria-label', on
+    ? 'Leave fullscreen (hold 1 second)'
+    : 'Fullscreen — hold 1 second to fill the screen');
+  if (!on) unlockOrientation();   // Esc leaving fullscreen counts too
+}
+
+document.addEventListener('fullscreenchange', syncFullscreenUi);
+document.addEventListener('webkitfullscreenchange', syncFullscreenUi);
+makeHoldable($('fsBtn'), 1000, toggleFullscreen);
 
 /* ---------- Header media controls (hold-to-activate) ---------- */
 

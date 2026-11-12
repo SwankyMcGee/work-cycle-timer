@@ -68,6 +68,17 @@
             <input type="range" id="mediaVol" min="0" max="100" step="5" aria-label="Music volume">
           </label>
         </div>
+        <button id="fsBtn" class="gear-btn fs-btn" type="button"
+                title="Hold for 1 second to fill the screen"
+                aria-label="Fullscreen — hold 1 second to fill the screen">
+          <svg id="fsEnterIcon" viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true">
+            <path d="M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zM4 14h2v4h4v2H4v-6zm14 0h2v6h-6v-2h4v-4z"/>
+          </svg>
+          <svg id="fsExitIcon" viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true" style="display:none">
+            <path d="M4 4h5v5H4V4zm11 0h5v5h-5V4zM4 15h5v5H4v-5zm11 0h5v5h-5v-5z"/>
+          </svg>
+          <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
+        </button>
         <button id="homeBtn" class="gear-btn home-btn" type="button"
                 title="Hold for 1 second to go to the home page"
                 aria-label="Home — hold 1 second to go to the home page">
