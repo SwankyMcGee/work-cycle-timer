@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings reference — Work Cycle Timer</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<header class="site-head">
+  <a class="brand" href="index.html">Work Cycle Timer</a>
+  <nav class="site-nav" aria-label="Site pages">
+    <a href="index.html">Home</a>
+    <a href="tools.html">Tools</a>
+    <a href="resources.html">Resources</a>
+  </nav>
+</header>
+<div class="subbar">
+  <nav class="site-nav" aria-label="Resource pages">
+    <a href="resources.html">All resources</a>
+    <a href="quick-start.html">Quick start</a>
+    <a href="user-guide.html">User guide</a>
+    <a href="settings-ref.html">Settings</a>
+    <a href="troubleshooting.html">Troubleshooting</a>
+    <a href="scenarios.html">Scenarios</a>
+    <a href="glossary.html">Glossary</a>
+  </nav>
+</div>
+
+<main>
+  <h1>Settings reference</h1>
+  <p class="meta">Every setting: where it lives, its default, and what it does ·
+    App state: November 2026</p>
+
+  <p><strong>Open settings: hold the gear ⚙ for 3 seconds.</strong> Tabs are on the left;
+    <span class="lbl">Done</span> closes. Reminders for the main screen controls:</p>
+  <table>
+    <tr><th>Control</th><th>Hold</th></tr>
+    <tr><td><span class="lbl">Start Work</span> / <span class="lbl">Start Earn</span> /
+      <span class="lbl">Pause</span> / <span class="lbl">Resume</span>, <span class="lbl">Skip →</span>,
+      <span class="lbl">Reset</span></td><td>1 second</td></tr>
+    <tr><td>Music ⏮ ▶ ⏭</td><td>1 second</td></tr>
+    <tr><td>Settings gear ⚙</td><td>3 seconds</td></tr>
+  </table>
+
+  <h2>Timers</h2>
+  <table>
+    <tr><th>Setting</th><th>Where</th><th>Default</th><th>What it does</th></tr>
+    <tr><td>Work length</td><td>Timers</td><td>10:00</td>
+      <td>Length of each work cycle (minutes + seconds). Minimum 10 seconds — shorter values
+        snap back to 10 s. Applies right away when the timer isn't running.</td></tr>
+    <tr><td>Earn length</td><td>Timers</td><td>5:00</td>
+      <td>Length of each earn cycle. Same 10-second minimum and rules.</td></tr>
+    <tr><td>Work cycles per earn</td><td>Timers</td><td>1</td>
+      <td>−/+ stepper (1–10): how many work cycles must finish before the Earn block.
+        The count restarts after each Earn, on <span class="lbl">Reset</span>, and when the
+        setting changes; <span class="lbl">Skip →</span> advances the sequence. Adds the
+        <span class="lbl">Cycle 2 of 3</span> badge and counts in the bottom line and
+        finish banner.</td></tr>
+    <tr><td>When time is up</td><td>Timers</td><td>Pause — wait for Start</td>
+      <td>What happens at the end of a cycle: <em>Pause</em> (banner, waits for a Start hold) ·
+        <em>Switch automatically</em> (quiet chime, other timer starts after a moment) ·
+        <em>Switch after 10 seconds</em> (countdown in the bottom line, then switches).</td></tr>
+    <tr><td>Show gentle warnings before time is up</td><td>Timers</td><td>On</td>
+      <td>Master switch for the transition warnings below.</td></tr>
+    <tr><td>2 minutes left</td><td>Timers</td><td>Off</td>
+      <td>Banner (+ soft chime if sound is on) when 2 minutes remain. Never warns at the
+        very start of a cycle.</td></tr>
+    <tr><td>1 minute left</td><td>Timers</td><td>On</td>
+      <td>Same, at 1 minute remaining.</td></tr>
+    <tr><td>30 seconds left</td><td>Timers</td><td>On</td>
+      <td>Same, at 30 seconds remaining.</td></tr>
+  </table>
+
+  <h2>Alerts</h2>
+  <table>
+    <tr><th>Setting</th><th>Where</th><th>Default</th><th>What it does</th></tr>
+    <tr><td>Sound alerts</td><td>Alerts</td><td>On</td>
+      <td>Master switch for all sound (warnings and the end-of-cycle chime). The timer works
+        fully in silence when off.</td></tr>
+    <tr><td>Sound</td><td>Alerts</td><td>Soft chime</td>
+      <td>Which gentle sound plays: Soft chime · Gentle bell · Single ping.</td></tr>
+    <tr><td>Volume</td><td>Alerts</td><td>50%</td>
+      <td>Loudness of the alert sounds (separate from music volume).</td></tr>
+    <tr><td>Test button</td><td>Alerts</td><td>—</td>
+      <td>Plays the chosen sound once, at the current volume.</td></tr>
+    <tr><td>Soft screen pulse when time is up</td><td>Alerts</td><td>Off</td>
+      <td>A slow, gentle fade pulse when a cycle ends — never a hard blink. Leave off for
+        light-sensitivity needs.</td></tr>
+  </table>
+
+  <h2>Display</h2>
+  <table>
+    <tr><th>Setting</th><th>Where</th><th>Default</th><th>What it does</th></tr>
+    <tr><td>Large text / big display</td><td>Display</td><td>Off</td>
+      <td>Enlarges text across the whole app.</td></tr>
+    <tr><td>Color theme</td><td>Display</td><td>Calm (soft blue &amp; green)</td>
+      <td>Swatch list of eleven palettes — Calm, Lavender, Mint, Peach, Rose, Ocean,
+        Low contrast, High contrast, Dark, Midnight, Warm dark. Each row shows colour chips
+        (page background, card, text, both dial colours); <strong>click to apply
+        instantly</strong>; the current one shows a ✓. The sensory animations recolour with
+        the theme.</td></tr>
+    <tr><td>Timer layout</td><td>Display</td><td>Side by side (default)</td>
+      <td>Or <em>One timer at a time</em> — handy on narrow screens and projectors.</td></tr>
+  </table>
+
+  <h2>Media</h2>
+  <table>
+    <tr><th>Setting</th><th>Where</th><th>Default</th><th>What it does</th></tr>
+    <tr><td>Animation</td><td>Media</td><td>None</td>
+      <td>Built-in sensory animation behind the timers: None · Floating bubbles · Drifting soft
+        glow · Slow waves · Gentle rain. No files needed.</td></tr>
+    <tr><td>Animation reactivity</td><td>Media</td><td>Gentle (default)</td>
+      <td>How lively the physics are: <em>Off — plain drifting</em> ·
+        <em>Gentle</em> (bubbles bump and occasionally pop; waves swell and crash into foam) ·
+        <em>Noticeable — livelier</em> (more bubbles, bouncier, more pops and crashes).</td></tr>
+    <tr><td>Animation opacity</td><td>Media</td><td>50%</td>
+      <td>How visible the animation is over the page.</td></tr>
+    <tr><td>Sensory video</td><td>Media</td><td>None</td>
+      <td>Pick a background video file. <strong>Session only</strong> — gone after a refresh;
+        re-pick it.</td></tr>
+    <tr><td>Video opacity</td><td>Media</td><td>25%</td>
+      <td>How visible the background video is.</td></tr>
+    <tr><td>Background music</td><td>Media</td><td>None</td>
+      <td>Pick a music file. Added music is remembered in the playlist.</td></tr>
+    <tr><td>Music volume</td><td>Media</td><td>30%</td>
+      <td>Same setting as the header music-bar slider — moving either moves the other.</td></tr>
+    <tr><td>Add music files</td><td>Media</td><td>—</td>
+      <td>Adds files to the playlist; they're saved with your settings (some browsers may
+        block storage for local file copies — just add them again if needed).</td></tr>
+    <tr><td>Playlist controls</td><td>Media</td><td>Repeat: Off</td>
+      <td>Drag the dotted handle (or ↑/↓) to reorder · click a name to jump · × removes ·
+        <em>Restore removed</em> brings back built-ins · <em>Shuffle</em> randomises ·
+        <em>Repeat</em> cycles Off → Playlist → One song.</td></tr>
+    <tr><td>Open The Ideas Engine</td><td>Ideas</td><td>—</td>
+      <td>Opens the suggestion form in a new tab (that click needs internet; the app itself
+        works offline).</td></tr>
+  </table>
+
+  <h2>Footer (every tab)</h2>
+  <table>
+    <tr><th>Setting</th><th>Where</th><th>Default</th><th>What it does</th></tr>
+    <tr><td>Done</td><td>Settings footer</td><td>—</td><td>Closes settings.</td></tr>
+    <tr><td>Reset all settings to defaults</td><td>Settings footer</td><td>—</td>
+      <td>Asks for confirmation, then restores every default. A custom title is kept
+        (identity, not a preference).</td></tr>
+    <tr><td>Suggest a feature</td><td>Settings footer</td><td>—</td>
+      <td>Jumps to the Ideas tab from anywhere in Settings.</td></tr>
+  </table>
+
+  <h2>Header (not settings — but often confused with them)</h2>
+  <table>
+    <tr><th>Control</th><th>Where</th><th>Default</th><th>What it does</th></tr>
+    <tr><td>Title pencil ✎</td><td>Header, beside the title</td><td>Work Cycle Timer</td>
+      <td>Click to edit the title; <strong>Enter</strong> saves, <strong>Esc</strong> cancels.
+        Saved with your settings.</td></tr>
+    <tr><td>⏮ ▶ ⏭</td><td>Header music bar</td><td>—</td>
+      <td>Hold 1 second each: previous / play-pause / next. Wrap through the playlist; from
+        <em>None</em>, next starts the first track. With Repeat: Off, play restarts from the
+        top after the last track.</td></tr>
+    <tr><td>Track dropdown</td><td>Header music bar</td><td>None</td>
+      <td>Lists the playlist; picking a track switches to it and plays.</td></tr>
+    <tr><td>Volume slider</td><td>Header music bar</td><td>30%</td>
+      <td>Music volume — the same setting as Media → Music volume.</td></tr>
+  </table>
+</main>
+
+<footer class="site-foot">
+  <a href="index.html">Home</a> · Staff resources for the Work Cycle Timer · App state: November 2026
+</footer>
+
+</body>
+</html>

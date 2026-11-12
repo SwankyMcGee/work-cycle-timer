@@ -1,414 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work Cycle Timer</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work Cycle Timer</title>
+<link rel="stylesheet" href="site.css">
 </head>
-<body data-theme="calm" data-current="work">
+<body>
 
-  <!-- Background sensory media layer -->
-  <div class="bg-layer" aria-hidden="true">
-    <video id="bgVideo" class="bg-video" muted loop playsinline preload="auto"></video>
-    <canvas id="animCanvas" class="anim-canvas"></canvas>
+<header class="site-head">
+  <a class="brand" href="index.html">Work Cycle Timer</a>
+  <nav class="site-nav" aria-label="Site pages">
+    <a href="index.html">Home</a>
+    <a href="tools.html">Tools</a>
+    <a href="resources.html">Resources</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Work Cycle Timer</h1>
+  <p class="meta">What would you like to look at?</p>
+
+  <div class="choose">
+    <a class="card primary" href="tools.html">
+      <h3>🧰 Tools</h3>
+      <p>Open the timer, or find other tools — and send ideas for new ones.</p>
+      <span class="go">Browse tools →</span>
+    </a>
+    <a class="card" href="resources.html">
+      <h3>📚 Resources</h3>
+      <p>Staff guides: quick start, user guide, settings, troubleshooting, scenarios, glossary.</p>
+      <span class="go">Browse resources →</span>
+    </a>
   </div>
-  <div id="flashOverlay" class="flash-overlay" aria-hidden="true"></div>
+</main>
 
-  <div class="app">
+<footer class="site-foot">
+  The timer loads from this site and then runs entirely in your browser — no account, no sign-in.
+  Materials dated November 2026.
+</footer>
 
-    <header class="app-header">
-      <div class="brand">
-        <div class="title-row">
-          <h1 id="appTitle">Work Cycle Timer</h1>
-          <input id="titleInput" class="title-input" type="text" maxlength="60"
-                 size="18" value="Work Cycle Timer" aria-label="Timer title" hidden>
-          <button id="editTitleBtn" class="edit-title-btn" type="button"
-                  title="Edit the timer title" aria-label="Edit the timer title">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-              <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-            </svg>
-          </button>
-        </div>
-        <p class="tagline">Work &rarr; Earn &rarr; Work &hellip;</p>
-      </div>
-      <div class="header-tools">
-        <div class="media-controls" role="group" aria-label="Music controls">
-          <select id="trackSelect" class="track-select" aria-label="Choose a track" title="Pick a track">
-            <option value="">None</option>
-          </select>
-          <button id="prevTrackBtn" class="tool-btn" type="button"
-                  title="Hold for 1 second for the previous track" aria-label="Previous track">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-              <path d="M6 6h2v12H6zm3.5 6L18 18V6z"/>
-            </svg>
-            <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
-          </button>
-          <button id="playPauseBtn" class="tool-btn" type="button"
-                  title="Hold for 1 second to play" aria-label="Play music">
-            <svg id="playIcon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-            <svg id="pauseIcon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true" style="display:none">
-              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-            </svg>
-            <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
-          </button>
-          <button id="nextTrackBtn" class="tool-btn" type="button"
-                  title="Hold for 1 second for the next track" aria-label="Next track">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
-            </svg>
-            <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
-          </button>
-          <label class="media-vol" title="Music volume">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
-            </svg>
-            <input type="range" id="mediaVol" min="0" max="100" step="5" aria-label="Music volume">
-          </label>
-        </div>
-        <button id="gearBtn" class="gear-btn" title="Hold for 3 seconds to open settings"
-                aria-label="Hold for 3 seconds to open settings">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-            <path d="M19.14 12.94a7.07 7.07 0 0 0 .06-.94 7.07 7.07 0 0 0-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.61-.22l-2.39.96a7.2 7.2 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.58.24-1.12.55-1.62.94l-2.39-.96a.5.5 0 0 0-.61.22L2.65 8.84a.5.5 0 0 0 .12.64l2.03 1.58a7.07 7.07 0 0 0 0 1.88l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.39.31.61.22l2.39-.96c.5.39 1.04.7 1.62.94l.36 2.54c.04.24.25.42.5.42h3.84c.25 0 .46-.18.5-.42l.36-2.54a7.2 7.2 0 0 0 1.62-.94l2.39.96c.22.09.48 0 .61-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/>
-          </svg>
-          <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
-        </button>
-      </div>
-    </header>
-
-    <div id="banner" class="banner" role="status" aria-live="polite"></div>
-
-    <section class="timers" aria-label="Cycle timers">
-
-      <div class="timer-card is-active" data-mode="work">
-        <div class="timer-name">Work</div>
-        <div class="cycle-badge" id="cycleBadge" hidden>
-          <span class="cycle-pips" id="cyclePips" aria-hidden="true"></span>
-          <span id="cycleText">Cycle 1 of 3</span>
-        </div>
-        <div class="dial-wrap">
-          <svg class="dial-svg" viewBox="0 0 100 100" aria-hidden="true">
-            <circle class="dial-track" cx="50" cy="50" r="46"></circle>
-            <path class="dial-wedge" d=""></path>
-            <circle class="dial-rim" cx="50" cy="50" r="46"></circle>
-          </svg>
-          <div class="dial-center">
-            <div class="time-display">10:00</div>
-          </div>
-        </div>
-        <div class="timer-status">Ready</div>
-        <div class="timer-total">of 10:00</div>
-      </div>
-
-      <div class="timer-card" data-mode="earn">
-        <div class="timer-name">Earn</div>
-        <div class="dial-wrap">
-          <svg class="dial-svg" viewBox="0 0 100 100" aria-hidden="true">
-            <circle class="dial-track" cx="50" cy="50" r="46"></circle>
-            <path class="dial-wedge" d=""></path>
-            <circle class="dial-rim" cx="50" cy="50" r="46"></circle>
-          </svg>
-          <div class="dial-center">
-            <div class="time-display">5:00</div>
-          </div>
-        </div>
-        <div class="timer-status">Waiting</div>
-        <div class="timer-total">of 5:00</div>
-      </div>
-
-    </section>
-
-    <div class="controls">
-      <button id="resetBtn" class="ghost-btn" type="button" title="Hold for 1 second">Reset
-        <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span></button>
-      <button id="mainBtn" class="main-btn" type="button" title="Hold for 1 second"><span id="mainLabel">Start Work</span>
-        <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span></button>
-      <button id="skipBtn" class="ghost-btn" type="button" title="Hold for 1 second">Skip &rarr;
-        <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span></button>
-    </div>
-
-    <p id="cycleLine" class="cycle-line">Work 10:00 &middot; Earn 5:00 &middot; Next up: Earn</p>
-
-  </div>
-
-  <!-- Settings (hold the gear for 3 seconds to open) -->
-  <div id="settingsModal" class="modal-backdrop" hidden>
-    <div class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
-      <nav class="settings-side" role="tablist" aria-label="Settings groups">
-        <button class="side-btn active" type="button" role="tab" aria-selected="true" data-tab="timers">Timers</button>
-        <button class="side-btn" type="button" role="tab" aria-selected="false" data-tab="alerts">Alerts</button>
-        <button class="side-btn" type="button" role="tab" aria-selected="false" data-tab="display">Display</button>
-        <button class="side-btn" type="button" role="tab" aria-selected="false" data-tab="media">Media</button>
-        <button class="side-btn" type="button" role="tab" aria-selected="false" data-tab="ideas">Ideas</button>
-      </nav>
-
-      <div class="settings-main">
-      <div class="settings-head">
-        <div class="head-row">
-          <h2 id="settingsTitle">Settings</h2>
-          <button id="closeSettings" class="icon-btn" type="button" aria-label="Close settings">&#10005;</button>
-        </div>
-      </div>
-
-      <div class="settings-body">
-
-        <div class="tab-panel active" data-tab="timers" role="tabpanel">
-        <section>
-          <h3>Cycle lengths</h3>
-          <div class="row">
-            <label for="workMin">Work length</label>
-            <span class="time-inputs">
-              <input type="number" id="workMin" min="0" max="180" step="1"> min
-              <input type="number" id="workSec" min="0" max="59" step="1"> sec
-            </span>
-          </div>
-          <div class="row">
-            <label for="earnMin">Earn length</label>
-            <span class="time-inputs">
-              <input type="number" id="earnMin" min="0" max="180" step="1"> min
-              <input type="number" id="earnSec" min="0" max="59" step="1"> sec
-            </span>
-          </div>
-          <p class="hint">Default is 10 minutes work / 5 minutes earn. Changes apply right away when the timer is not running.</p>
-        </section>
-
-        <section>
-          <h3>Work cycles per earn</h3>
-          <div class="row">
-            <label for="cyclesVal">Work cycles before Earn</label>
-            <span class="stepper" role="group" aria-label="Work cycles before Earn">
-              <button type="button" class="step-btn" id="cyclesDown"
-                      aria-label="One fewer work cycle">&minus;</button>
-              <output id="cyclesVal" class="step-val" aria-live="polite">1</output>
-              <button type="button" class="step-btn" id="cyclesUp"
-                      aria-label="One more work cycle">+</button>
-              <span id="cyclesNote" class="step-note">work, earn, work, earn&hellip;</span>
-            </span>
-          </div>
-          <p class="hint">How many work cycles must finish before the Earn cycle starts. The count
-            restarts after each Earn, when you change this setting, and when you press Reset;
-            Skip advances to the next cycle in the sequence.</p>
-        </section>
-
-        <section>
-          <h3>When time is up</h3>
-          <div class="row">
-            <label for="endBehavior">Then</label>
-            <select id="endBehavior">
-              <option value="pause">Pause &mdash; wait for Start (default)</option>
-              <option value="auto">Switch to the other timer automatically</option>
-              <option value="auto10">Switch automatically after 10 seconds</option>
-            </select>
-          </div>
-        </section>
-
-        <section>
-          <h3>Transition warnings</h3>
-          <div class="row">
-            <label class="check-label" for="warningsOn">
-              <input type="checkbox" id="warningsOn"> Show gentle warnings before time is up
-            </label>
-          </div>
-          <div class="row checks">
-            <label class="check-label" for="warn120"><input type="checkbox" id="warn120"> 2 minutes left</label>
-            <label class="check-label" for="warn60"><input type="checkbox" id="warn60"> 1 minute left</label>
-            <label class="check-label" for="warn30"><input type="checkbox" id="warn30"> 30 seconds left</label>
-          </div>
-          <p class="hint">Warnings show a soft banner and, if sound is on, a quiet chime.</p>
-        </section>
-        </div>
-
-        <div class="tab-panel" data-tab="alerts" role="tabpanel" hidden>
-        <section>
-          <h3>Sound</h3>
-          <div class="row">
-            <label class="check-label" for="soundOn"><input type="checkbox" id="soundOn"> Sound alerts</label>
-          </div>
-          <div class="row">
-            <label for="soundType">Sound</label>
-            <select id="soundType">
-              <option value="chime">Soft chime</option>
-              <option value="bell">Gentle bell</option>
-              <option value="ping">Single ping</option>
-            </select>
-          </div>
-          <div class="row">
-            <label for="soundVol">Volume</label>
-            <span class="range-wrap">
-              <input type="range" id="soundVol" min="0" max="100" step="5">
-              <span id="soundVolVal" class="range-val">50%</span>
-              <button id="testSound" class="mini-btn" type="button">Test</button>
-            </span>
-          </div>
-          <p class="hint">Sounds are gentle and optional &mdash; the timer works fully in silence.</p>
-        </section>
-
-        <section>
-          <h3>Screen flash</h3>
-          <div class="row">
-            <label class="check-label" for="flashOn"><input type="checkbox" id="flashOn"> Soft screen pulse when time is up</label>
-          </div>
-          <p class="hint">A slow, gentle pulse &mdash; not a hard blink. Turn off for light sensitivity.</p>
-        </section>
-        </div>
-
-        <div class="tab-panel" data-tab="display" role="tabpanel" hidden>
-        <section>
-          <h3>Display</h3>
-          <div class="row">
-            <label class="check-label" for="largeText"><input type="checkbox" id="largeText"> Large text / big display</label>
-          </div>
-          <div class="row">
-            <span class="field-label" id="themeLbl">Color theme</span>
-            <p class="hint">Click a palette — it applies right away and is saved
-              with your settings. The little squares show the page background,
-              card, text and the two dial colors.</p>
-          </div>
-          <div id="themeList" class="theme-list" role="group" aria-labelledby="themeLbl"></div>
-          <div class="row">
-            <label for="layout">Timer layout</label>
-            <select id="layout">
-              <option value="side">Side by side (default)</option>
-              <option value="single">One timer at a time</option>
-            </select>
-          </div>
-        </section>
-        </div>
-
-        <div class="tab-panel" data-tab="media" role="tabpanel" hidden>
-        <section>
-          <h3>Sensory animation (built in)</h3>
-          <div class="row">
-            <label for="animSelect">Animation</label>
-            <select id="animSelect">
-              <option value="none">None</option>
-              <option value="bubbles">Floating bubbles</option>
-              <option value="glow">Drifting soft glow</option>
-              <option value="waves">Slow waves</option>
-              <option value="rain">Gentle rain</option>
-            </select>
-          </div>
-          <div class="row">
-            <label for="animReact">Animation reactivity</label>
-            <select id="animReact">
-              <option value="off">Off &mdash; plain drifting</option>
-              <option value="gentle">Gentle (default)</option>
-              <option value="noticeable">Noticeable &mdash; livelier</option>
-            </select>
-          </div>
-          <div class="row">
-            <label for="animOpacity">Animation opacity</label>
-            <span class="range-wrap">
-              <input type="range" id="animOpacity" min="0" max="100" step="5">
-              <span id="animOpacityVal" class="range-val">50%</span>
-            </span>
-          </div>
-          <p class="hint">Calming animations built into the app &mdash; no video files needed. They run
-            softly behind the timers and work together with background music. Reactivity adds gentle
-            physics: bubbles bump into each other and sometimes pop, waves swell, sharpen and crash
-            into drifting foam &mdash; <b>Off</b> keeps them drifting plainly.</p>
-        </section>
-
-        <section>
-          <h3>Background media</h3>
-          <div class="row">
-            <label for="videoSelect">Sensory video</label>
-            <select id="videoSelect"><option value="">None</option></select>
-          </div>
-          <div class="row">
-            <label for="videoOpacity">Video opacity</label>
-            <span class="range-wrap">
-              <input type="range" id="videoOpacity" min="0" max="60" step="5">
-              <span id="videoOpacityVal" class="range-val">25%</span>
-            </span>
-          </div>
-          <div class="row">
-            <label for="videoFile">Add video (this session)</label>
-            <input type="file" id="videoFile" accept="video/*" multiple>
-          </div>
-          <div class="row">
-            <label for="musicSelect">Background music</label>
-            <select id="musicSelect"><option value="">None</option></select>
-          </div>
-          <div class="row">
-            <label for="musicVol">Music volume</label>
-            <span class="range-wrap">
-              <input type="range" id="musicVol" min="0" max="100" step="5">
-              <span id="musicVolVal" class="range-val">30%</span>
-            </span>
-          </div>
-          <p class="hint">Videos last until the page is closed. Music you add is remembered — see the
-            playlist below. To ship tracks with the app, drop files into the <b>media</b> folder and
-            list them in <b>media/playlist.js</b> (see README).</p>
-        </section>
-
-        <section>
-          <h3>Music playlist</h3>
-          <div class="row">
-            <label for="musicFile">Add music files</label>
-            <input type="file" id="musicFile" accept="audio/*" multiple>
-          </div>
-          <div class="row pl-actions">
-            <button id="plShuffle" class="ghost-btn" type="button">Shuffle</button>
-            <button id="plRepeat" class="ghost-btn" type="button">Repeat: Off</button>
-            <button id="plRestore" class="ghost-btn" type="button">Restore removed</button>
-          </div>
-          <div id="playlist" class="pl-list" role="list" aria-label="Music playlist"></div>
-          <p class="hint">Every track — built-in and added — plays in this order. Drag the dotted
-            handle to reorder (or focus it and press &uarr; / &darr;), click a name to jump to it,
-            and use <b>&times;</b> to remove a track. Removed built-ins come back with
-            <b>Restore removed</b>. Order, repeat mode and added files are saved with the rest of
-            your settings.</p>
-        </section>
-        </div>
-
-        <div class="tab-panel" data-tab="ideas" role="tabpanel" hidden>
-        <section>
-          <h3>The Ideas Engine</h3>
-          <div class="row">
-            <label for="suggestBtn">Idea box</label>
-            <button id="suggestBtn" class="save-btn" type="button">Open The Ideas Engine</button>
-          </div>
-          <p id="suggestHint" class="hint"></p>
-        </section>
-        </div>
-
-      </div>
-      <div class="settings-foot">
-        <button id="doneSettings" class="save-btn" type="button">Done</button>
-        <button id="resetSettings" class="ghost-btn" type="button">Reset all settings to defaults</button>
-        <button id="suggestTab" class="ghost-btn foot-link" type="button">Suggest a feature</button>
-      </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Easter egg: hidden Windows logo — click the title 5 times to reveal -->
-  <button id="winLogo" class="win-logo" type="button" aria-label="Windows logo">
-    <svg viewBox="0 0 100 100" aria-hidden="true">
-      <path fill="#f25022" d="M7 21 Q27 13 47 17 L47 48 Q27 45 7 53 Z"/>
-      <path fill="#7fba00" d="M53 17 Q74 13 93 8 L93 40 Q74 44 53 48 Z"/>
-      <path fill="#00a4ef" d="M7 57 Q27 54 47 57 L47 88 Q27 86 7 93 Z"/>
-      <path fill="#ffb900" d="M53 57 Q74 61 93 64 L93 96 Q74 92 53 88 Z"/>
-    </svg>
-  </button>
-
-  <!-- Easter egg scene: cute Windows XP "Bliss" hills -->
-  <div id="xpScene" class="xp-scene" hidden>
-    <div class="xp-sky"></div>
-    <div class="xp-cloud xp-cloud-1"></div>
-    <div class="xp-cloud xp-cloud-2"></div>
-    <div class="xp-cloud xp-cloud-3"></div>
-    <div class="xp-hill xp-hill-back"></div>
-    <div class="xp-hill xp-hill-front"></div>
-    <p class="xp-hint">Click anywhere to go back</p>
-  </div>
-
-  <audio id="bgMusic" preload="none"></audio>
-
-  <script src="media/playlist.js"></script>
-  <script src="app.js"></script>
 </body>
 </html>

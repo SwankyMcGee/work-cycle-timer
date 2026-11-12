@@ -9,14 +9,42 @@ cycle ends, the next one is ready to go.
 
 No installation, no admin rights, no internet required:
 
-1. Double-click **`index.html`**.
+1. Double-click **`timer.html`** (the app itself).
 2. It opens in the browser (Edge/Chrome/Firefox).
 3. **Hold Start Work** for one second (a little bar fills across the
    button — quick taps do nothing, on purpose).
 
+Double-clicking **`index.html`** instead opens the **home page** — a chooser
+with just two doors: **Tools** (the timer, The Ideas Engine) and
+**Resources** (the six staff guides) — one click from the timer.
+
 Everything (settings, theme, sounds, your music playlist — order, repeat mode and
 added music files) is remembered between launches via the browser's local storage
 and IndexedDB. Nothing is ever sent over the network.
+
+## Website (GitHub Pages)
+
+**Live: `https://swankymcgee.github.io/work-cycle-timer/`** — publishing is
+driven locally (`git add -A` → `commit` → `push`; Pages rebuilds in ~1 min).
+
+| Page | What it is |
+|---|---|
+| `index.html` | Home — just a chooser: **Tools** or **Resources** |
+| `tools.html` | Tools hub — timer card + Ideas Engine card |
+| `resources.html` | Resources hub — the six staff-resource cards |
+| `timer.html` | **The app** (`https://…/work-cycle-timer/timer.html`) |
+| `quick-start.html` | One-page start-here for staff |
+| `user-guide.html` | Full task-based guide, organised by settings tab |
+| `settings-ref.html` | Every setting: location, default, behavior |
+| `troubleshooting.html` | Symptom → fix FAQ |
+| `scenarios.html` | Four walkthroughs: standard day, 3 cycles, calm sensory, silent room |
+| `glossary.html` | Plain-language terms |
+| `site.css` | Shared styling + print styles for all site pages |
+
+The old root link (`…/work-cycle-timer/`) still works — it now lands on the
+home menu, one click from the timer. All staff materials deep-link to
+`timer.html` and are print-friendly (Ctrl+P → clean paper output). Materials
+are dated **November 2026** to match the app's state.
 
 ## The cycle
 
@@ -232,9 +260,15 @@ Built on established visual-timer practice for autistic users:
 ## Files
 
 ```
-index.html        page structure
-styles.css        themes, layout, animations
+index.html        home — chooser (Tools / Resources)
+tools.html        tools hub (timer + Ideas Engine cards)
+resources.html    resources hub (six staff-resource cards)
+timer.html        the app — page structure
+styles.css        themes, layout, animations (app)
+site.css          shared styling + print styles (site pages)
 app.js            timer engine, settings, sound, media
+quick-start.html  staff resource pages (also: user-guide, settings-ref,
+user-guide.html   troubleshooting, scenarios, glossary)
 media/            sensory music (5 built-in loops) + drop extra videos/music here
 media/playlist.js media list the app reads
 tools/            script that generates the built-in loops

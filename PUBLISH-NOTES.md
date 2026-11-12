@@ -1,4 +1,4 @@
-# Status — Ideas Engine ✅, GitHub Pages ✅ (manual test passes pending)
+# Status — Ideas Engine ✅, GitHub Pages ✅, training materials ✅ (manual test passes pending)
 
 Notes so we can pick up exactly where we stopped.
 
@@ -50,8 +50,19 @@ Notes so we can pick up exactly where we stopped.
 
 ## 2. GitHub Pages hosting — DONE ✅ (live)
 
-**Live URL: `https://swankymcgee.github.io/work-cycle-timer/`**
+**Live URL: `https://swankymcgee.github.io/work-cycle-timer/`** (home menu)
+**App URL: `https://swankymcgee.github.io/work-cycle-timer/timer.html`**
 **Repo: `https://github.com/SwankyMcGee/work-cycle-timer`** (public)
+
+**Site restructure (2026-11–12, shipped with the training materials):**
+the app moved `index.html` → `timer.html` (`git mv`); the root `index.html`
+is now a **clean chooser** — two doors only: **Tools** (`tools.html`: timer
++ Ideas Engine) and **Resources** (`resources.html`: the six staff guides) —
+per the user's "less cluttered" request. Resource pages carry a compact
+two-tier nav (Home · Tools · Resources + slim resource strip). The old root
+link still lands somewhere useful (one click to the timer). Same origin, so
+existing localStorage settings survive the move. User guide, scenarios and
+troubleshooting were compacted at the same time.
 
 How it went (2026-11-11):
 - `gh` 2.103.3 installed via winget — the MSI needed **one UAC prompt**,
@@ -76,22 +87,33 @@ Pages rebuilds automatically (~1 min). Check with
 **Still to verify:** open the live link once on the school network
 (github.io may or may not be filtered — same check we did for docs.google.com).
 
-## 3. NEXT THREAD — staff training materials
+## 3. Staff training materials — BUILT ✅ (hosted; test pass pending)
 
-**The brief exists and is current:** `STAFF-TRAINING-PROMPT.md` (16 headings,
-7 sections) — it's written as a *prompt for building* the training materials:
-1. What the app is · 2. Who the training is for · 3. Complete feature
-reference (exact, never invent) · 4. Sensory-friendly design principles to
-apply to the materials · **5. Deliverables — "confirm this set with me
-before building"** · 6. Ground rules · 7. Source files.
+**Confirmed with the user:** the full §5 gamut — all six deliverables, as
+**hosted pages on the live site** (print-friendly), staff open the app by
+**link only** (materials deep-link `timer.html`), plus a **new home page**
+menu at the root. Ground rules (§6) applied: only documented behavior,
+exact on-screen wording, every sensitive button says it must be **held** with
+its duration, dated November 2026.
 
-**Where to resume:** Section 5 (deliverables) has never been confirmed with
-the user — start there: agree the deliverable set, then build. The feature
-reference (§3) was kept in sync today with palettes, playlist, Ideas Engine
-and animation reactivity, so it's safe to build from.
+**Delivered (all linked from the home menu, shared `site.css`, nav bar on
+every page, "App state: November 2026" in every footer):**
 
-**App state at pause:** live at
-`https://swankymcgee.github.io/work-cycle-timer/`; working tree clean;
-updates ship via `git add -A` → `commit` → `push` (auto-rebuild ~1 min).
-User's pending manual test passes: palettes, animation reactivity, form
-click-through (all testable on the live link).
+| Page | Deliverable |
+|---|---|
+| `quick-start.html` | (a) One-page start-here for staff |
+| `user-guide.html` | (b) Full task-based user guide (organised by settings tab) |
+| `settings-ref.html` | (c) Settings reference table (every setting + default) |
+| `troubleshooting.html` | (d) Troubleshooting FAQ |
+| `scenarios.html` | (e) Four scenario walkthroughs (standard day, 3 cycles, calm sensory, silent classroom) |
+| `glossary.html` | (f) Glossary of all terms |
+| `index.html` | NEW home chooser — Tools / Resources doors (bonus, agreed) |
+| `tools.html` / `resources.html` | The two hub pages |
+
+Exact strings were re-verified against `app.js` before writing (including
+the inactive-card status **"Waiting"**, which §3 of the brief had missed).
+The brief `STAFF-TRAINING-PROMPT.md` got a status line.
+
+**Remaining:** push (ships restructure + all pages), verify live, then the
+user's manual test pass: check all pages/nav links, print one-pager, home
+menu cards, Ideas Engine card → form.

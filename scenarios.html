@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scenarios — Work Cycle Timer</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<header class="site-head">
+  <a class="brand" href="index.html">Work Cycle Timer</a>
+  <nav class="site-nav" aria-label="Site pages">
+    <a href="index.html">Home</a>
+    <a href="tools.html">Tools</a>
+    <a href="resources.html">Resources</a>
+  </nav>
+</header>
+<div class="subbar">
+  <nav class="site-nav" aria-label="Resource pages">
+    <a href="resources.html">All resources</a>
+    <a href="quick-start.html">Quick start</a>
+    <a href="user-guide.html">User guide</a>
+    <a href="settings-ref.html">Settings</a>
+    <a href="troubleshooting.html">Troubleshooting</a>
+    <a href="scenarios.html">Scenarios</a>
+    <a href="glossary.html">Glossary</a>
+  </nav>
+</div>
+
+<main>
+  <h1>Scenario walkthroughs</h1>
+  <p class="meta">Four ready-made setups · App state: November 2026</p>
+
+  <div class="hold">
+    <strong>Hold, don't tap.</strong> Main and music buttons: <strong>1 second</strong>.
+    Settings gear: <strong>3 seconds</strong>. Let the thin bar fill completely.
+  </div>
+
+  <h2>1 · A standard work/earn day</h2>
+  <p class="meta">Defaults — works with no setup at all.</p>
+  <ol class="steps">
+    <li><strong>Open</strong> <a href="https://swankymcgee.github.io/work-cycle-timer/timer.html">the timer</a>:
+      paused, both dials visible — Work (10:00) shows <span class="lbl">Ready</span>, Earn (5:00)
+      is dimmed at <span class="lbl">Waiting</span>.</li>
+    <li><strong>Hold <span class="lbl">Start Work</span> for 1 second</strong> —
+      <span class="lbl">Running</span>, dial fills, bottom line reads
+      <span class="lbl">Work 10:00 · Earn 5:00 · Next up: Earn</span>.</li>
+    <li>Warnings arrive on their own at 1 minute and 30 seconds left (2 min optional), with a soft
+      chime.</li>
+    <li>At 0:00: <span class="lbl">Time's up</span> + <span class="lbl">Work is finished! Earn is
+      next.</span> — and it <em>waits</em>. Hold <span class="lbl">Start Earn</span> for 1 second.</li>
+    <li>Earn ends with <span class="lbl">Earn is finished! Work is next.</span> — hold Start again;
+      Work → Earn all day. <span class="lbl">Skip →</span> (hold 1 s) jumps ahead,
+      <span class="lbl">Reset</span> (hold 1 s) restarts the current block.</li>
+  </ol>
+
+  <h2>2 · Three work cycles before the earn</h2>
+  <ol class="steps">
+    <li><strong>Hold the gear ⚙ for 3 seconds</strong> → <span class="lbl">Timers</span> → press
+      <strong>+</strong> on <span class="lbl">Work cycles per earn</span> until it reads
+      <strong>3</strong> (1–10; default 1) → <span class="lbl">Done</span>.</li>
+    <li><strong>Hold <span class="lbl">Start Work</span> for 1 second.</strong> The Work card shows
+      <span class="lbl">Cycle 1 of 3</span> with three pips (first bright, rest hollow); bottom
+      line: <span class="lbl">Next up: Work cycle 2 of 3</span>.</li>
+    <li>Each ending announces the next: <span class="lbl">Work cycle 1 of 3 is finished! Work cycle
+      2 of 3 is next.</span> — hold Start to continue; the badge advances and pips fill solid
+      behind it.</li>
+    <li>After the third: <span class="lbl">Work cycle 3 of 3 is finished! Earn is next.</span>,
+      bottom line <span class="lbl">Next up: Earn</span>. Hold <span class="lbl">Start Earn</span> —
+      the badge hides during Earn and the count restarts at 1 next round.</li>
+    <li><strong>Good to know:</strong> every work cycle gets its own full timer, warnings, chime and
+      flash. <span class="lbl">Skip →</span> advances the sequence · <span class="lbl">Reset</span>
+      zeroes the count · changing the setting restarts it.</li>
+  </ol>
+
+  <h2>3 · A calm sensory setup</h2>
+  <ol class="steps">
+    <li><strong>Hold the gear ⚙ for 3 seconds</strong> → <span class="lbl">Display</span> → click a
+      gentle theme (✓ marks the current): <span class="lbl">Calm (soft blue &amp; green)</span> is
+      the default; Lavender, Mint or Peach are equally soft. Leave <span class="lbl">Large text /
+      big display</span> off unless needed.</li>
+    <li><span class="lbl">Media</span> → <span class="lbl">Animation</span> → a slow one:
+      <span class="lbl">Drifting soft glow</span> or <span class="lbl">Slow waves</span>. Keep
+      <span class="lbl">Animation reactivity</span> at <span class="lbl">Gentle (default)</span>
+      or set <span class="lbl">Off — plain drifting</span> for the calmest motion; lower
+      <span class="lbl">Animation opacity</span> (default 50%) if you want it barely there.</li>
+    <li><span class="lbl">Alerts</span> → <span class="lbl">Sound</span> → <span class="lbl">Single
+      ping</span>, <span class="lbl">Volume</span> 30–40% (press <span class="lbl">Test</span> to
+      check). Keep <span class="lbl">Soft screen pulse when time is up</span> <strong>off</strong>.</li>
+    <li><span class="lbl">Timers</span> → keep <span class="lbl">Pause — wait for Start
+      (default)</span>. If warnings feel like pressure, switch <span class="lbl">Show gentle
+      warnings before time is up</span> off — or tick only <span class="lbl">1 minute left</span>.</li>
+    <li><strong>Optional music:</strong> <span class="lbl">Media</span> → <span class="lbl">Background
+      music</span> → pick a file, volume low — or the header music bar (⏮ ▶ ⏭, hold 1 s each). The
+      built-ins are gentle and original; try <span class="lbl">Warm pad (slow strings)</span>.</li>
+    <li><span class="lbl">Done</span> → hold <span class="lbl">Start Work</span> for 1 second.</li>
+  </ol>
+
+  <h2>4 · A fully silent, visual-only classroom</h2>
+  <ol class="steps">
+    <li><strong>Hold the gear ⚙ for 3 seconds</strong> → <span class="lbl">Alerts</span> → switch
+      <span class="lbl">Sound alerts</span> <strong>off</strong> (silences every warning and chime).</li>
+    <li>Music off too: <span class="lbl">Music volume</span> → 0, or hold the header <strong>▶</strong>
+      1 second (nothing to pause if no track was picked).</li>
+    <li>Leave <span class="lbl">Soft screen pulse when time is up</span> <strong>off</strong> for
+      zero light changes — or <strong>on</strong> for one slow gentle fade at each end (never a hard
+      blink).</li>
+    <li><span class="lbl">Timers</span> → keep <span class="lbl">Show gentle warnings before time is
+      up</span> <strong>on</strong>: warnings still show as text (<span class="lbl">1 minute
+      left</span>, <span class="lbl">30 seconds left</span>) with sound off — quiet advance notice
+      for the whole room.</li>
+    <li>Keep <span class="lbl">Pause — wait for Start (default)</span>: the banner
+      <span class="lbl">Work is finished! Earn is next.</span> is the entire signal; anyone holds
+      Start when ready.</li>
+    <li><span class="lbl">Display</span> → consider <span class="lbl">Large text / big display</span>
+      so the time reads from the back of the room. The filling dials, status words
+      (<span class="lbl">Running</span> → <span class="lbl">Time's up</span>) and the
+      <span class="lbl">Cycle 2 of 3</span> badge carry every message — no sound needed. Hold
+      <span class="lbl">Start Work</span> to begin.</li>
+  </ol>
+
+  <div class="why">
+    <strong>Why these work:</strong> hold to activate (no accidental triggers) · pause at the end
+    (nobody is rushed) · soft optional cues (never a beep or hard flash) · settings remembered
+    per machine so each room keeps its own setup. Staff who understand the why are less likely to
+    override it — please pass that on.
+  </div>
+
+  <p>Words for a setting? See the <a href="settings-ref.html">settings reference</a> or the
+    <a href="user-guide.html">full user guide</a>.</p>
+</main>
+
+<footer class="site-foot">
+  <a href="index.html">Home</a> · Staff resources for the Work Cycle Timer · App state: November 2026
+</footer>
+
+</body>
+</html>

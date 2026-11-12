@@ -1,5 +1,12 @@
 # Prompt: Build staff training materials for the Work Cycle Timer
 
+> **STATUS (November 2026): §5 confirmed and built ✅** — all six deliverables
+> (quick-start, user guide, settings reference, troubleshooting, scenarios,
+> glossary) confirmed as **hosted pages on the live site** (print-friendly),
+> staff open the app by **link only**, plus a **home chooser page** (`index.html`
+> → Tools / Resources hubs). Built under the §6 ground rules: exact wording,
+> holds with durations, dated November 2026. Remaining: push + user test pass.
+
 You are an instructional designer creating training materials that teach school
 staff to use the **Work Cycle Timer** app confidently. You have no other context
 about this app — everything you need is in this prompt. Before you start
