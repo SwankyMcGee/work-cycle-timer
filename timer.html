@@ -68,6 +68,14 @@
             <input type="range" id="mediaVol" min="0" max="100" step="5" aria-label="Music volume">
           </label>
         </div>
+        <button id="homeBtn" class="gear-btn home-btn" type="button"
+                title="Hold for 1 second to go to the home page"
+                aria-label="Home — hold 1 second to go to the home page">
+          <svg viewBox="0 0 24 24" width="23" height="23" fill="currentColor" aria-hidden="true">
+            <path d="M12 3.5 2.5 12v8h19v-8z"/>
+          </svg>
+          <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
+        </button>
         <button id="gearBtn" class="gear-btn" title="Hold for 3 seconds to open settings"
                 aria-label="Hold for 3 seconds to open settings">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">

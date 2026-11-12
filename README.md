@@ -86,6 +86,7 @@ nothing, so an accidental brush can't start, skip or reset anything:
 |---|---|
 | **Start / Pause / Resume**, **Skip →**, **Reset** | 1 second |
 | Music: **⏮ previous**, **▶ play/pause**, **⏭ next** | 1 second |
+| **Home 🏠** (header, next to the gear) — returns to the site's home page | 1 second |
 | **Settings gear** (top-right) | 3 seconds |
 
 A thin bar fills along the bottom of the button while you hold: let it fill
@@ -109,6 +110,8 @@ play-pause / next**, plus a **volume slider**.
   moving either one moves the other
 - With no tracks yet, play/pause shows a gentle banner pointing to
   Settings → Media
+- **A session never opens with audio** — a remembered track loads paused and
+  music only ever begins from a deliberate hold (play, pick, or add a track)
 
 ## Settings (hold the gear, top-right, for 3 seconds)
 

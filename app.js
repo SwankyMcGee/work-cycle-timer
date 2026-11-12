@@ -1060,6 +1060,9 @@ document.querySelectorAll('.side-btn').forEach((b) => {
    itself on when this is a real URL. The form opens in a new tab — that
    one step needs internet; the app itself never does. */
 const SUGGEST_URL = 'https://forms.gle/bjPLDgdWpkLaNFEz5';
+/* The site's home page (the menu) — the header's 🏠 button holds for
+   1 second and navigates here. Needs internet only when pressed. */
+const HOME_URL = 'https://swankymcgee.github.io/';
 
 (function setupSuggest() {
   const btn = $('suggestBtn');
@@ -1443,7 +1446,7 @@ function applyVideo() {
   bgVideo.play().catch(() => {});
 }
 
-function applyMusic() {
+function applyMusic(autoplay) {
   const src = resolveMusicSrc(settings.bgMusic);
   bgMusic.loop = settings.repeatMode === 'one';   // "one song" = native loop
   if (!src) {
@@ -1454,7 +1457,9 @@ function applyMusic() {
   if (bgMusic.getAttribute('src') === src) return;
   bgMusic.src = src;
   bgMusic.volume = clamp(settings.musicVol, 0, 100) / 100;
-  bgMusic.play().catch(() => {});
+  // autoplay === false loads the track paused: a session NEVER starts with
+  // audio playing — music only ever begins from a deliberate hold/pick.
+  if (autoplay !== false) bgMusic.play().catch(() => {});
 }
 
 function addVideoFiles(input) {
@@ -1566,7 +1571,7 @@ async function loadPersistedFiles() {
   if (before !== after) saveSettings();
 
   populateMedia();
-  applyMusic();
+  applyMusic(false);   // restoring files after load: still never auto-plays
   syncMediaUi();
 }
 
@@ -1812,6 +1817,7 @@ function removeTrack(key) {
   }
 
   // Removing the track that's playing? Keep the mood going with the new top.
+  // Removing it while paused? Load the new top but stay paused.
   if (wasCurrent && wasPlaying) {
     const q = musicQueue();
     if (q.length) settings.bgMusic = q[0].key;
@@ -1819,7 +1825,7 @@ function removeTrack(key) {
 
   saveSettings();
   populateMedia();
-  if (wasCurrent && settings.bgMusic) applyMusic();
+  if (wasCurrent && settings.bgMusic) applyMusic(wasPlaying);
   syncMediaUi();
 }
 
@@ -1929,6 +1935,7 @@ $('plRestore').addEventListener('click', () => {
 makeHoldable(mainBtn, 1000, onMain);
 makeHoldable($('resetBtn'), 1000, onReset);
 makeHoldable($('skipBtn'), 1000, onSkip);
+makeHoldable($('homeBtn'), 1000, () => { window.location.href = HOME_URL; });
 makeHoldable(gearBtn, 3000, openSettings);
 
 /* ---------- Header media controls (hold-to-activate) ---------- */
@@ -2110,7 +2117,7 @@ applySettings();
 applyTitle();
 populateMedia();
 applyVideo();
-applyMusic();
+applyMusic(false);   // never open a session with audio — music waits for a hold
 syncMediaUi();
 loadPersistedFiles().catch(() => {});   // restore added music files, then re-sync
 syncSettingsInputs();

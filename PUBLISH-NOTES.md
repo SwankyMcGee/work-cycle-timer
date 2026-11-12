@@ -86,6 +86,23 @@ classrooms."** Applied to the base site's header brand, `<title>`s and home
 page h1. The tool itself keeps its own name (Work Cycle Timer) wherever it
 refers to the app (tools-page card, resource-page footers).
 
+## 4. App changes — 2026-11-12 (audio + home button)
+
+- **Never start with audio:** `applyMusic(autoplay)` gained a load-paused
+  mode. `applyMusic(false)` on page init and on the IndexedDB file-restore
+  path — a remembered track now loads **paused**; music only begins from a
+  deliberate hold/pick/add. Also fixed: removing the current track while
+  paused now loads the next track paused instead of starting it
+  (`applyMusic(wasPlaying)`).
+- **Home button (kid-safe):** new 🏠 button in the header between the music
+  bar and the gear — **hold 1 second** (`makeHoldable`, `HOME_URL` const at
+  the top of `app.js`) → navigates to `https://swankymcgee.github.io/`.
+  Reuses the `.gear-btn` box with `.home-btn { --hold-dur: 1s }`. Needs
+  internet only when pressed; the timer itself still works fully offline.
+- Materials updated (base repo): user guide (opening step + music-bar
+  bullet), settings reference (header table + hold-duration table).
+- Balance check passed: 360/360 braces, 1577/1577 parens.
+
 How it went (2026-11-11):
 - `gh` 2.103.3 installed via winget — the MSI needed **one UAC prompt**,
   which the user accepted; gh lives at `C:\Program Files\GitHub CLI\gh.exe`

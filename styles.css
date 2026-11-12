@@ -404,6 +404,9 @@ body.flash-enabled.flash-active .flash-overlay {
 .gear-btn:hover { border-color: var(--border-strong); }
 .gear-btn.holding { border-color: var(--accent); color: var(--accent); }
 
+/* Header 🏠 home button — same box as the gear, but a 1-second hold */
+.home-btn { --hold-dur: 1s; }
+
 .hold-track {
   position: absolute;
   left: 7px;
