@@ -130,6 +130,6 @@ Exact strings were re-verified against `app.js` before writing (including
 the inactive-card status **"Waiting"**, which §3 of the brief had missed).
 The brief `STAFF-TRAINING-PROMPT.md` got a status line.
 
-**Remaining:** push (ships restructure + all pages), verify live, then the
-user's manual test pass: check all pages/nav links, print one-pager, home
-menu cards, Ideas Engine card → form.
+**Remaining:** user's manual test pass — check all pages/nav links at
+`https://swankymcgee.github.io/`, print one-pager, chooser → Tools → timer,
+and the old `/work-cycle-timer/` URL redirecting into the app.
