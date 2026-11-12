@@ -161,6 +161,39 @@ Pages rebuilds automatically (~1 min). Check with
 - Balance check passed: app.js 379/379 braces, 1628/1628 parens;
   site.js 33/33 braces, 103/103 parens.
 
+## 6. Home page spruce-up — 2026-11-12 (site repo)
+
+- **Hero:** inline-SVG toolshed illustration beside the title (two-column
+  ≥760px, stacked below), custom SVG toolbox/book icons replacing the
+  emoji (emoji render differently per machine), and the two chooser cards
+  restyled as **shed doors** — CSS plank texture, doorknob, gentle tilt +
+  arrow slide on hover; transforms disabled under
+  `prefers-reduced-motion`.
+- **Background patterns (toggleable):** whisper-quiet per-palette motifs
+  on the home page only — clouds (calm, peach), waves (ocean, mint),
+  stars (midnight, dark, warm), sparkles (lavender, rose); low contrast
+  and high contrast stay deliberately plain. One grayscale SVG tile per
+  family at 7–9% alpha on `body.home::before` (`z-index:-1`). Off switch
+  = **Background patterns** row at the bottom of the 🎨 Palette panel;
+  stored as `homeMotifs` in the shared settings key (read-patch-write,
+  never clobbering the timer's fields), applied pre-paint with a
+  `motifs-off` class on `<html>`, synced across tabs.
+- **Jump-back card:** third chooser card ("Pick up where you left off")
+  showing the last guide read. Recorded per page in a site-only key
+  `workCycleTimer.site.v1` — home and the two hubs are never recorded
+  (they're already doors); render guards on `PAGE_NAMES`. Note: `.card`
+  sets `display:block`, which beats the UA `[hidden]` style, so both the
+  jump card and the ribbon carry explicit `[hidden] { display:none }`
+  guards.
+- **Delight:** what's-new ribbon (version-keyed dismiss in
+  `workCycleTimer.site.news`, hidden pre-paint via a `news-off` class —
+  no flash), quick-links pills (Quick start / User guide /
+  Troubleshooting), footer 💡 Ideas Engine nudge (the existing form),
+  and easter egg #2 — click the home title 5 times within 2.5s of each
+  other and a cat appears by the shed (same trick as the timer's title).
+- Balance check passed: site.js 66/66 braces, 191/191 parens; app files
+  untouched this round (379/379, 1628/1628).
+
 ## 3. Staff training materials — BUILT ✅ (hosted; test pass pending)
 
 **Confirmed with the user:** the full §5 gamut — all six deliverables, as
