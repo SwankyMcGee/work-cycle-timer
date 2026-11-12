@@ -179,12 +179,19 @@ Pages rebuilds automatically (~1 min). Check with
   never clobbering the timer's fields), applied pre-paint with a
   `motifs-off` class on `<html>`, synced across tabs.
 - **Jump-back card:** third chooser card ("Pick up where you left off")
-  showing the last guide read. Recorded per page in a site-only key
-  `workCycleTimer.site.v1` — home and the two hubs are never recorded
-  (they're already doors); render guards on `PAGE_NAMES`. Note: `.card`
+  showing the last page read — **every page except home** (user's call:
+  the hubs count too; the original build excluded Tools/Resources as
+  door-duplicates). Recorded per page in a site-only key
+  `workCycleTimer.site.v1`; render guards on `PAGE_NAMES`. Note: `.card`
   sets `display:block`, which beats the UA `[hidden]` style, so both the
   jump card and the ribbon carry explicit `[hidden] { display:none }`
   guards.
+- **Clouds redrawn (user feedback: paired ellipses weren't cloud-like):**
+  each cloud is now a flat-ish base ellipse plus bump circles of
+  differing radii, composited with **group `opacity`** (not
+  `fill-opacity`) so overlaps flatten first and never seam-darkens.
+  Four distinct silhouettes per tile — wide three-bump, tall round,
+  small low, thin wisp.
 - **Delight:** what's-new ribbon (version-keyed dismiss in
   `workCycleTimer.site.news`, hidden pre-paint via a `news-off` class —
   no flash), quick-links pills (Quick start / User guide /
