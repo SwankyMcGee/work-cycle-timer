@@ -80,6 +80,12 @@ site is now **two repos on one domain**:
 - Site pages were `git rm`'d from this repo after copying to the base repo;
   app.js/timer.html never referenced them (verified by grep).
 
+**Site name (2026-11-12, user's choice):** the collection is called
+**The Learning Toolshed** — tagline **"Sensory-friendly tools for autistic
+classrooms."** Applied to the base site's header brand, `<title>`s and home
+page h1. The tool itself keeps its own name (Work Cycle Timer) wherever it
+refers to the app (tools-page card, resource-page footers).
+
 How it went (2026-11-11):
 - `gh` 2.103.3 installed via winget — the MSI needed **one UAC prompt**,
   which the user accepted; gh lives at `C:\Program Files\GitHub CLI\gh.exe`
