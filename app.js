@@ -1951,9 +1951,9 @@ makeHoldable(gearBtn, 3000, openSettings);
 
 /* ---------- Fullscreen (header ⛶, hold 1 s) ----------
    Fills the screen with the tool (the :fullscreen rules in styles.css
-   center it and grow the dials). On phones we also try to force
-   landscape; desktop and iOS ignore the lock — fullscreen itself
-   still works wherever the API exists. */
+   keep the header on top, center the tool below it and grow the dials).
+   On phones we also try to force landscape; desktop and iOS ignore the
+   lock — fullscreen itself still works wherever the API exists. */
 
 function isFullscreen() {
   return !!(document.fullscreenElement || document.webkitFullscreenElement);

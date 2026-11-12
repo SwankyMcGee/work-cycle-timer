@@ -411,15 +411,31 @@ body.flash-enabled.flash-active .flash-overlay {
 .fs-btn { --hold-dur: 1s; }
 
 /* ---------- Fullscreen ----------
-   ⛶ expands the whole tool to the screen: the app drops its width cap,
-   the stack centers vertically, and the dials grow into the space. */
+   ⛶ expands the whole tool to the screen: the app drops its width cap
+   and the dials grow into the space. The header (title + top buttons)
+   stays pinned to the top of the screen; everything below it stays
+   centered in what's left. */
 
 :fullscreen .app,
 :-webkit-full-screen .app {
   width: 100%;
   max-width: none;
-  justify-content: center;
+  justify-content: flex-start;   /* header stays at the top … */
   padding: 1rem clamp(1rem, 3vw, 2.5rem) 1.5rem;
+}
+
+/* … and the tool centers in the remaining space: the two auto margins
+   split it evenly (space above the dials, space below the bottom line).
+   If content ever outgrows the screen, both drop to 0 and the page
+   scrolls instead of cutting anything off. */
+:fullscreen .timers,
+:-webkit-full-screen .timers {
+  margin-top: auto;
+}
+
+:fullscreen .cycle-line,
+:-webkit-full-screen .cycle-line {
+  margin-bottom: auto;
 }
 
 :fullscreen .timer-card,

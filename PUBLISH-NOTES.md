@@ -130,8 +130,11 @@ Pages rebuilds automatically (~1 min). Check with
 
 - **Fullscreen (header ⛶, hold 1 s):** `toggleFullscreen()` runs the
   Fullscreen API on `document.documentElement` (webkit fallbacks included);
-  `:fullscreen` CSS drops the width cap, centers the stack and grows the
-  dials (`min(36vw, 46vh, 520px)`). On enter, best-effort
+  `:fullscreen` CSS drops the width cap, pins the header (title + top
+  buttons) to the top, centers the tool below it and grows the dials
+  (`min(36vw, 46vh, 520px)`). The centering is two auto margins —
+  `margin-top` on `.timers`, `margin-bottom` on `.cycle-line` — so if
+  content ever outgrows the screen it scrolls instead of clipping. On enter, best-effort
   `screen.orientation.lock('landscape')` — Android Chrome only; desktop
   and iOS ignore the lock but fullscreen itself still works. Unlocked on
   any exit including Esc (`fullscreenchange` → `syncFullscreenUi()` swaps
