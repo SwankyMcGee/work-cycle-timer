@@ -263,6 +263,20 @@ Pages rebuilds automatically (~1 min). Check with
   `SUGGEST_URL` must not point at a page that doesn't exist yet).
   Remaining: user confirms the TEST row landed in the sheet (then
   deletes it) + the usual manual test pass.
+- **Follow-up round (user):** footers now read "Staff resources for The
+  Learning Toolshed" (all seven pages that had the old phrase); the form
+  opens with a required tool-or-feature question — feature ideas reveal
+  **"Which tool is it for?"**, a select with the placeholder
+  `-Select A Tool-` styled like the resources picker, whose options are
+  built from a new **`TOOLS`** list in `site.js` (single registration
+  point for new tools; README recipe step 2 updated) and `required`
+  follows visibility so a hidden select can never block a send.
+  Backend columns are now `Type | When | Idea | Name or email | Which
+  tool` — `Type` (`Tool`/`Feature`) is the new first column, the old
+  `Page` field/column is replaced by the feature's tool;
+  `ensureSheet_()` rewrites a pre-Type header on the next submission.
+  "One box" wording → "A couple of quick questions" (ideas page +
+  glossary).
 
 ## 3. Staff training materials — BUILT ✅ (hosted; test pass pending)
 
