@@ -167,20 +167,28 @@ Pages rebuilds automatically (~1 min). Check with
   ≥760px, stacked below), custom SVG toolbox/book icons replacing the
   emoji (emoji render differently per machine), and the two chooser cards
   restyled as **doors** (user feedback rounds below).
-- **Door cards, v2 — signs + swing (user feedback: planks distracted
-  from the text; wanted a swing-open with a peek at the next page, then
-  "text as signs with nails"):** three layers per card —
-  `.door-recess` (absolute inset 5px: a palette-themed inline-SVG mini
-  preview of the destination page — header bar, title, cards — with an
-  inset doorway shadow) → `.door-face` (whisper plank seams
-  `rgba(127,127,127,.07)` every 46–48px, `transform-origin:left center`,
-  `perspective:1400px` on the card) → `.door-sign` (opaque
-  `var(--surface)` plate carrying icon/h3/p/go, four `.nail` corner dots
-  with a `radial-gradient` metal highlight, so texture never sits behind
-  words). Hover/focus swings the face `rotateY(-26deg)` on its left
-  hinge to reveal the preview; old knob/tilt rules removed; under
-  `prefers-reduced-motion` the door snaps open instead (transition off,
-  swing kept) so the preview stays reachable.
+- **Door cards, v2 — signs + swing (user feedback rounds: planks
+  distracted from the text; wanted a swing-open with a peek at the next
+  page; then "text as signs with nails"; then "entirely text signs —
+  tighten the text, let the door show through"):** three layers per
+  card — `.door-recess` (absolute inset 5px: a palette-themed
+  inline-SVG mini preview of the destination page — header bar, title,
+  cards — with an inset doorway shadow) → `.door-face` (**in flow**,
+  `flex:1`/`min-height:190px` — it is what gives the card height;
+  whisper plank seams `rgba(127,127,127,.07)` every 46–48px over
+  `--surface-2`, so the door is a slightly different shade from the
+  sign) → `.door-sign` (opaque `var(--surface)` plate with **tightened**
+  padding `.9rem 1.05rem` and `margin:18px 26px` — a door frame shows
+  on all four sides; four `.nail` corner dots with a `radial-gradient`
+  metal highlight; texture never sits behind words). Hover/focus swings
+  the face `rotateY(-34deg)` on a **right** hinge
+  (`transform-origin:right center`) — the door recedes, its projection
+  shrinks, and an ~80px strip of the preview appears along the left
+  edge (right hinge chosen so the strip shows the mock's header/title,
+  the most page-like part); `perspective:1400px` on the card. Old
+  knob/tilt rules removed; under `prefers-reduced-motion` the door
+  snaps open instead (transition off, swing kept) so the preview stays
+  reachable.
 - **Background patterns (toggleable):** whisper-quiet per-palette motifs
   on the home page only — clouds (calm, peach), waves (ocean, mint),
   stars (midnight, dark, warm), sparkles (lavender, rose); low contrast
