@@ -1056,10 +1056,11 @@ document.querySelectorAll('.side-btn').forEach((b) => {
 });
 
 /* ---------- The Ideas Engine (Settings → Ideas) ----------
-   The Google Form's link (Send → link icon → Copy). The button switches
-   itself on when this is a real URL. The form opens in a new tab — that
-   one step needs internet; the app itself never does. */
-const SUGGEST_URL = 'https://forms.gle/bjPLDgdWpkLaNFEz5';
+   The site's idea page — a themed form that posts to a Google Sheet.
+   The button switches itself on when this is a real URL. The page
+   opens in a new tab — that one step needs internet; the app itself
+   never does. */
+const SUGGEST_URL = 'https://swankymcgee.github.io/ideas.html';
 /* The site's home page (the menu) — the header's 🏠 button holds for
    1 second and navigates here. Needs internet only when pressed. */
 const HOME_URL = 'https://swankymcgee.github.io/';
@@ -1076,7 +1077,7 @@ const HOME_URL = 'https://swankymcgee.github.io/';
       'read; nothing is posted publicly.';
   } else {
     btn.disabled = true;
-    hint.textContent = 'Not connected yet — paste the Google Form link into ' +
+    hint.textContent = 'Not connected yet — paste The Ideas Engine URL into ' +
       'SUGGEST_URL at the top of app.js and this button switches on.';
   }
 })();

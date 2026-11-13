@@ -145,7 +145,7 @@ For classes that do several work blocks before a break:
   shortcut (Reset-all confirms first and restores defaults; a custom title is
   kept)
 - **Ideas:** **The Ideas Engine** — **Open The Ideas Engine** launches the
-  Google Form in a new tab (that click needs internet; the app itself works
+  idea page in a new tab (that click needs internet; the app itself works
   offline). The footer's **Suggest a feature** button jumps straight to this
   tab. Staff use it to request new features or whole new tools
 

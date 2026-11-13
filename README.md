@@ -148,8 +148,8 @@ bottom — so nothing is buried in one long list.
   and **Repeat** cycles *Off → Playlist → One song → Off*: Off plays through the queue once
   then stops, Playlist wraps around forever, One song loops the current track. Order, repeat
   mode and added files are saved with the rest of your settings
-- **Ideas** — **The Ideas Engine**: **Open The Ideas Engine** launches the Google
-  Form in a new tab (link set via `SUGGEST_URL` at the top of `app.js`;
+- **Ideas** — **The Ideas Engine**: **Open The Ideas Engine** launches the
+  idea page in a new tab (URL set via `SUGGEST_URL` at the top of `app.js`;
   that click needs internet, the app itself never does), and a **Suggest a feature**
   shortcut in the settings footer jumps straight to the tab
 

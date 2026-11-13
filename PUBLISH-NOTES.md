@@ -5,6 +5,9 @@ Notes so we can pick up exactly where we stopped.
 ## 1. Google Form — DONE ✅ (link wired; final click-through test pending)
 
 - **The Ideas Engine** is live: `https://forms.gle/bjPLDgdWpkLaNFEz5`
+  — **superseded 2026-11-12 by §7**: the themed `ideas.html` page now
+  owns the front door; this form link survives only as that page's
+  error fallback.
 
 - **Agreed design (minimal, friction-free):** two fields only —
   1. "What's your idea?" — Paragraph, **required**
@@ -220,6 +223,38 @@ Pages rebuilds automatically (~1 min). Check with
   other and a cat appears by the shed (same trick as the timer's title).
 - Balance check passed: site.js 66/66 braces, 191/191 parens; app files
   untouched this round (379/379, 1628/1628).
+
+## 7. Ideas Engine → themed page + Google Sheet — 2026-11-12 (site repo)
+
+- **Why:** the Google Form sent staff off-site and couldn't be themed;
+  GitHub Pages is static, so submissions need an external writer either
+  way. User chose: **themed form → Google Sheet** (keeps the Form's
+  data readability).
+- **Front end:** new `ideas.html` — the agreed two fields ("What's your
+  idea?" required · "Name or email — only if you'd like a reply"), our
+  header/palette/theming, honeypot + 3-second timing gates (invisible),
+  hidden `page` field. Success state reuses the Form's "Gulp!"
+  confirmation word for word; error state offers the old Google Form as
+  a fallback link. `site.js` gains `IDEAS_ENDPOINT` (empty until
+  deployed → the button disables and points at SETUP.md) plus
+  `initIdeas()`, which posts `FormData` (simple request, no preflight).
+- **Backend:** `ideas-engine/Code.gs` (Apps Script web app — `doPost`
+  appends `When | Idea | Name or email | Page` rows to an `Ideas`
+  sheet, header + frozen row created on first use; honeypot / faster
+  than 3s / empty idea → fake success so bots don't retry; `doGet` is
+  the smoke test) + `ideas-engine/SETUP.md` (5-step deploy: sheet →
+  Extensions/Apps Script → paste → Deploy as *Me* / *Anyone* → copy
+  `/exec` URL).
+- **Wiring updates:** index footer nudge + tools card → `ideas.html`;
+  troubleshooting (2 spots), user-guide, settings-ref, glossary and the
+  site README updated — the only remaining `forms.gle` link on the site
+  is ideas.html's error fallback; `app.js`
+  `SUGGEST_URL = 'https://swankymcgee.github.io/ideas.html'` (+ comment
+  rewrite + not-connected hint); training brief and timer README no
+  longer say "Google Form" (they now say the idea page).
+- **PENDING:** user deploys the script → URL pasted into
+  `IDEAS_ENDPOINT` → ship site, then timer → wire test (test idea lands
+  as a row; /exec answers JSON).
 
 ## 3. Staff training materials — BUILT ✅ (hosted; test pass pending)
 
