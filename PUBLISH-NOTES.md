@@ -277,6 +277,21 @@ Pages rebuilds automatically (~1 min). Check with
   `ensureSheet_()` rewrites a pre-Type header on the next submission.
   "One box" wording → "A couple of quick questions" (ideas page +
   glossary).
+- **Logo round (user):** the home hero's inline-SVG shed is replaced by
+  a pasted logo image (`toolshed-logo.png`, 600x335 transparent PNG —
+  cartoon shed + wordmark), committed to the site repo and served from
+  the root. Because the image carries the words, the visible `<h1>` is
+  now `.visually-hidden` (structure/screen readers keep it); the logo
+  rides an always-light `.logo-plate` (the wordmark is dark slate and
+  would vanish on the four dark palettes — verified on Dark (slate):
+  page `#151a20`, plate stays `#f7f5f0`); hero is now a centered
+  single column (logo, tagline, ask) instead of the two-column grid.
+  The cat easter egg moved from the title to the logo plate (5 clicks
+  within 2.5s, `#logoPlate`), and the cat itself was re-homed into the
+  plate's bottom-right corner with a fixed dark fill (`#3d4653`, not
+  `var(--text)`) so it reads against the light plate in every palette.
+  Reduced-motion still snaps it in (`transition: none` kept). README
+  structure table updated (logo row + hero description).
 
 ## 3. Staff training materials — BUILT ✅ (hosted; test pass pending)
 
