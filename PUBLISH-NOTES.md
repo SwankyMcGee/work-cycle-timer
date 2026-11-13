@@ -252,9 +252,17 @@ Pages rebuilds automatically (~1 min). Check with
   `SUGGEST_URL = 'https://swankymcgee.github.io/ideas.html'` (+ comment
   rewrite + not-connected hint); training brief and timer README no
   longer say "Google Form" (they now say the idea page).
-- **PENDING:** user deploys the script → URL pasted into
-  `IDEAS_ENDPOINT` → ship site, then timer → wire test (test idea lands
-  as a row; /exec answers JSON).
+- **PENDING → SHIPPED:** endpoint smoke-tested (`doGet` →
+  `{"ok":true,"service":"The Ideas Engine"}`), `IDEAS_ENDPOINT` wired,
+  site pushed. **Live end-to-end test passed from the browser**: filled
+  the form on `ideas.html`, submitted, the "Gulp!" confirmation appeared
+  — CORS and `doPost` both fine (one bug found and fixed on the way:
+  `.idea-form { display:flex }` beat the UA `[hidden]` rule, so the form
+  didn't hide after success — added an `.idea-form[hidden]` guard, same
+  pattern as the jump card). Timer push follows the site (its
+  `SUGGEST_URL` must not point at a page that doesn't exist yet).
+  Remaining: user confirms the TEST row landed in the sheet (then
+  deletes it) + the usual manual test pass.
 
 ## 3. Staff training materials — BUILT ✅ (hosted; test pass pending)
 
