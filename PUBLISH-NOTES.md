@@ -282,16 +282,26 @@ Pages rebuilds automatically (~1 min). Check with
   cartoon shed + wordmark), committed to the site repo and served from
   the root. Because the image carries the words, the visible `<h1>` is
   now `.visually-hidden` (structure/screen readers keep it); the logo
-  rides an always-light `.logo-plate` (the wordmark is dark slate and
-  would vanish on the four dark palettes — verified on Dark (slate):
-  page `#151a20`, plate stays `#f7f5f0`); hero is now a centered
-  single column (logo, tagline, ask) instead of the two-column grid.
-  The cat easter egg moved from the title to the logo plate (5 clicks
-  within 2.5s, `#logoPlate`), and the cat itself was re-homed into the
-  plate's bottom-right corner with a fixed dark fill (`#3d4653`, not
-  `var(--text)`) so it reads against the light plate in every palette.
-  Reduced-motion still snaps it in (`transition: none` kept). README
-  structure table updated (logo row + hero description).
+  sits **directly on the themed background** (user wants the PNG's
+  transparency honored — an earlier always-light `.logo-plate` behind
+  it was removed). Wordmark contrast on dark palettes solved with
+  **option B (user's pick):** a generated light-wordmark twin
+  (`toolshed-logo-light.png` — same art/alpha, only the wordmark's
+  dark-slate pixels recolored to `#e7edf2`, produced by detecting the
+  wordmark band below the shed's transparent gap), swapped in by a
+  CSS rule keyed to the four dark `data-theme`s
+  (`high`/`dark`/`midnight`/`warm`) via `content: url(...)` — no JS,
+  no flash (`data-theme` is set before first paint), transparent in
+  both variants; README notes the selector must grow with any new
+  dark palette. Hero is now a centered single column (logo, tagline,
+  ask) instead of the two-column grid. The cat easter egg moved from
+  the title to the logo (5 clicks within 2.5s, `#logoPlate`),
+  re-homed into the logo's bottom-right corner with `var(--text)`
+  fill so it follows the palette. Reduced-motion still snaps it in
+  (`transition: none` kept). Also in this round: the three footers
+  that never got the rename (home, tools, resources) now read
+  "Staff resources for The Learning Toolshed" — all ten pages match.
+  README structure table updated (logo rows + hero description).
 
 ## 3. Staff training materials — BUILT ✅ (hosted; test pass pending)
 
