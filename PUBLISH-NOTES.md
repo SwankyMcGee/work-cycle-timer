@@ -303,6 +303,47 @@ Pages rebuilds automatically (~1 min). Check with
   "Staff resources for The Learning Toolshed" — all ten pages match.
   README structure table updated (logo rows + hero description).
 
+## 8. Math Playground — BUILT ✅ (live; manual play-test pending)
+
+**Repo:** `SwankyMcGee/math-playground` (new, public, `main` → root Pages).
+**Live:** `https://swankymcgee.github.io/math-playground/` — first build
+`built` at commit `121be8d`, 2026-11-14.
+
+Four calm math games for autistic students, all inline SVG art (no image
+generator exists in this session, so nothing was raster-generated), no
+network calls on load:
+
+| Page | Game |
+| --- | --- |
+| `counters.html` | ten-frame, **pointer drag-and-drop** (tap kept as a touch/keyboard fallback) |
+| `number-line.html` | **draggable hopper + big −/+ buttons**, live distance badge (−3 / +7 / 0), choices gated until the hopper reaches the landing |
+| `facts.html` | one fact, three big choices, hint |
+| `story.html` | picture story + scene icons + proportional bar model |
+
+Every game has grade-level and math-operations pickers (CCSS bands; ops that
+do not apply are disabled with a plain-language label).
+
+**Scoring rule (user's wording):** all four games keep score — *successes
+only*; skips and reveals never add to it. Round of 5 ends on a
+congratulatory screen (🎉 "Nice work!", "You got 4 of 5 right this round.",
+"Total score: N", "Play again?"). Wrong answers stay silent/neutral; after
+two tries the answer is shown kindly and that problem scores nothing.
+
+**Storage:** play settings + score in `localStorage["workCycleTimer.math.v1"]`
+(`{grade, ops, sound, last, score}`); theme/motifs still shared through
+`workCycleTimer.settings.v1`, so the palette follows from the site and timer.
+
+**Site hooks (this repo):** `TOOLS` in `site.js` += `Math Playground` (the
+Ideas Engine dropdown picks it up by itself) and a new card on `tools.html`.
+README's "tools live in their own repos" paragraph now lists both repos.
+
+**Verified in-browser (local server, then live):** zero console errors on all
+five pages; grade/operation chips; score pill persists across games and
+pages; wrong → neutral, no score; reveal → no score; congrats screen +
+Play again reset; counters drag-in/drag-out with hover highlight and clean
+teardown; number-line badge, gating, and locked-choice message; motif
+off-toggle; palette (11) persists across pages.
+
 ## 3. Staff training materials — BUILT ✅ (hosted; test pass pending)
 
 **Confirmed with the user:** the full §5 gamut — all six deliverables, as
