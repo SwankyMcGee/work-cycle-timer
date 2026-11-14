@@ -344,6 +344,25 @@ Play again reset; counters drag-in/drag-out with hover highlight and clean
 teardown; number-line badge, gating, and locked-choice message; motif
 off-toggle; palette (11) persists across pages.
 
+**Update — same day (user's follow-up):**
+
+- *Counters numbers got smaller*: `GAME_CEILING.counters` 50 → **20**, so the
+  board never exceeds **two ten-frames** and the student drags far fewer
+  counters. The page's own note follows automatically ("… numbers up to 20
+  for Grade 2"); Grade K still clamps to 10.
+- *Number Line gets a magnifier*: the SVG viewBox grew (`0 0 560 204`, baseline
+  moved to y=150) to make room above the line. When the hopper sits on the
+  landing, the circle switches to `at-answer` — **fill-opacity .12 (see-through)
+  with a 3px `--accent2` outline** — and a **magnifying glass floats over the
+  number**: opaque lens ring + handle pointing down at the hopper, with the
+  number set at 24px over a short piece of line and three ticks inside the
+  glass. Toggling is live: hop off the landing and the glass disappears, the
+  circle goes solid again, and the choices re-lock. The lens is
+  `pointer-events: none`, clamped inside the viewBox, and measured clear of the
+  badge, the axis numbers and the start-number label (min 4px gap) for every
+  operation. For division the circle sits on the dividend, so the glass shows
+  that number (the choices stay the jump count). Hero line updated to match.
+
 ## 3. Staff training materials — BUILT ✅ (hosted; test pass pending)
 
 **Confirmed with the user:** the full §5 gamut — all six deliverables, as
