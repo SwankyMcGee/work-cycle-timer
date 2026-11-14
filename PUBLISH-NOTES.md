@@ -350,6 +350,17 @@ off-toggle; palette (11) persists across pages.
   board never exceeds **two ten-frames** and the student drags far fewer
   counters. The page's own note follows automatically ("… numbers up to 20
   for Grade 2"); Grade K still clamps to 10.
+- *Counters carries spare counters*: every problem now brings **3–5 spares**
+  (`SPARE_MIN`/`SPARE_MAX`), so the tray always holds more than the problem
+  needs — pressing Check with the whole pile dragged in is deliberately wrong,
+  and the student has to count to b instead of emptying the tray. The frames
+  are sized for `answer + spares` (three ten-frames at most) so the wrong guess
+  still fits. Subtracting gets spares too: they sit in the tray, are refused
+  with a neutral nudge ("Those are spares — take counters out of the frames
+  instead.") on both the tap and the drag path (no drop highlight), and the
+  tray label/aria text tell them apart from counters already taken out.
+  Verified: all-in check → neutral, no score; correct count → +1; two wrongs →
+  reveal leaves the spares in the tray and scores nothing.
 - *Number Line gets a magnifier*: the SVG viewBox grew (`0 0 560 204`, baseline
   moved to y=150) to make room above the line. When the hopper sits on the
   landing, the circle switches to `at-answer` — **fill-opacity .12 (see-through)
