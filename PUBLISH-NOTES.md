@@ -404,3 +404,53 @@ The brief `STAFF-TRAINING-PROMPT.md` got a status line.
 **Remaining:** user's manual test pass — check all pages/nav links at
 `https://swankymcgee.github.io/`, print one-pager, chooser → Tools → timer,
 and the old `/work-cycle-timer/` URL redirecting into the app.
+
+## 9. Docker server image — BUILT ✅ (running locally; server deploy pending)
+
+**Goal (user's):** the whole Toolshed runs from a server so performance is
+identical on any school machine — while GitHub Pages stays live and untouched
+as the browser copy.
+
+**Delivered — `Vibe Coding Projects\toolshed-docker\` (plus `.dockerignore`
+in the parent folder, which is the build context):**
+
+| File | Role |
+|---|---|
+| `Dockerfile` | One `nginx:alpine` image: site at `/`, timer at `/work-cycle-timer/`, games at `/math-playground/` — the exact live paths |
+| `nginx.conf` | UTF-8 charset, gzip for text, `try_files` clean-directory redirects, `absolute_redirect off`, `audio/wav` MIME |
+| `docker-compose.yml` | Port `8080` (`TOOLSHED_PORT` env overrides), wget healthcheck, `restart: unless-stopped` |
+| `README.md` | Build / run / deploy instructions |
+
+**Build-time origin rewrite:** the image rewrites
+`https://swankymcgee.github.io` → root-relative in every `.html`/`.js`, then
+**fails the build** if any reference survives — the server copy never
+contacts github.io (`.md` docs keep their live URLs). The whole rewrite was
+simulated and verified before Docker was installed.
+
+**Run:** from `toolshed-docker\`, `docker compose up -d --build` →
+`http://localhost:8080/` (`TOOLSHED_PORT=9000 docker compose up -d --build`
+to change). Docker Desktop 4.99.0 + WSL2 are installed on this PC.
+
+**Verified in Chrome (November 2026):** all three paths plus `tools.html`
+load with **zero console errors and zero page errors**; a full network trace
+showed **every request on `localhost:8080` — none to github.io, none to
+port 80**; MIME parity with GitHub Pages (`text/css`,
+`application/javascript; charset=utf-8`, `image/png`, `audio/wav`);
+served `app.js` has `HOME_URL = '/'` and `SUGGEST_URL = '/ideas.html'` with
+the "Home — hold 1 second" button; math footer link
+"The Learning Toolshed => /"; tools cards point at
+`/work-cycle-timer/timer.html` and `/math-playground/`; a key written on
+`tools.html` was read back from the timer and math paths (same origin,
+shared localStorage).
+
+**Docker quirks hit (for the record):** this BuildKit rejects
+`COPY "Work Cycle Timer/"` ("unexpected end of statement") — JSON exec form
+fixed it; the engine first refused to start until WSL2 + Virtual Machine
+Platform were enabled (DISM exit 3010); nginx's default absolute directory
+redirect strips the mapped port (`$host` has no `:8080`) and landed on
+port 80 → `absolute_redirect off` fixes it for good.
+
+**Remaining:** deploy on the server — copy the three repos +
+`toolshed-docker\` side by side, `docker compose up -d --build`, then the
+user's manual pass against the server URL. GitHub Pages remains live for
+any browser that reaches it.
