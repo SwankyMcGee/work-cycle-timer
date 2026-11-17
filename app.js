@@ -1061,8 +1061,9 @@ document.querySelectorAll('.side-btn').forEach((b) => {
    opens in a new tab — that one step needs internet; the app itself
    never does. */
 const SUGGEST_URL = 'https://swankymcgee.github.io/ideas.html';
-/* The site's home page (the menu) — the header's 🏠 button holds for
-   1 second and navigates here. Needs internet only when pressed. */
+/* The Learning Toolshed home hub — the home for every tool. The
+   header's 🏠 button holds for 1 second and navigates here.
+   Needs internet only when pressed. */
 const HOME_URL = 'https://swankymcgee.github.io/';
 
 (function setupSuggest() {

@@ -72,7 +72,7 @@ nothing (this stops accidental brushes by students):
 | Start / Pause / Resume, Skip →, Reset | **1 second** |
 | Music: ⏮ previous, ▶ play/pause, ⏭ next | **1 second** |
 | Fullscreen ⛶ (header, before 🏠) | **1 second** |
-| Home 🏠 (header, between the music bar and the gear) — opens the site's home page | **1 second** |
+| Home 🏠 (header, between the music bar and the gear) — opens The Learning Toolshed home (the hub for every tool) | **1 second** |
 | Settings gear (top-right) | **3 seconds** |
 
 A thin bar fills along the bottom of the button while held — let it fill
@@ -164,7 +164,8 @@ For classes that do several work blocks before a break:
   track was selected last session; sound only ever begins from a deliberate
   hold or pick
 - **🏠 home button** (header, between the music bar and the gear) — hold
-  **1 second** to leave the timer and open the site's home page (needs
+  **1 second** to leave the timer and open The Learning Toolshed home, the
+  hub for every tool (needs
   internet when pressed; the timer itself works offline)
 
 ### Built-in music — five original warm-pad loops (safe for school use)

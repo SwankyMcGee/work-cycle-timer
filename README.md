@@ -87,7 +87,7 @@ nothing, so an accidental brush can't start, skip or reset anything:
 | **Start / Pause / Resume**, **Skip →**, **Reset** | 1 second |
 | Music: **⏮ previous**, **▶ play/pause**, **⏭ next** | 1 second |
 | **Fullscreen ⛶** (header, before 🏠) — fills the screen with the tool | 1 second |
-| **Home 🏠** (header, next to the gear) — returns to the site's home page | 1 second |
+| **Home 🏠** (header, next to the gear) — opens The Learning Toolshed home, the hub for every tool | 1 second |
 | **Settings gear** (top-right) | 3 seconds |
 
 A thin bar fills along the bottom of the button while you hold: let it fill
