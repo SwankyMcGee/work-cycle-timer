@@ -7,7 +7,8 @@ cycle ends, the next one is ready to go.
 
 ## How to run
 
-No installation, no admin rights, no internet required:
+No installation, no admin rights. Internet is needed only to load the shared
+toolshed library from swankymcgee.github.io (no CDNs, fonts, or telemetry).
 
 1. Double-click **`timer.html`** (the app itself).
 2. It opens in the browser (Edge/Chrome/Firefox).
@@ -251,7 +252,7 @@ Built on established visual-timer practice for autistic users:
 ## School / IT notes
 
 - Pure static HTML/CSS/JS — no installer, no executable, no admin rights
-- No network calls of any kind (no CDNs, no fonts, no telemetry) — works fully offline
+- The only network request is the shared toolshed-common library from swankymcgee.github.io (no CDNs, no fonts, no telemetry); the timer itself then runs fully offline in the browser
 - Settings live in the browser's `localStorage` on that machine only
 - If your IT browser blocks `localStorage`, the app still runs — settings just
   won't remember between launches
