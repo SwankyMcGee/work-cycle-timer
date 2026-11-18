@@ -1,7 +1,43 @@
 /* ============================================================
    Work Cycle Timer — styles
    Themes are CSS variable sets on body[data-theme]
+   (base palette vars come from toolshed-common.css)
    ============================================================ */
+
+/* ---------- Reconciliation with toolshed-common.css (loads first) ----------
+   The shared stylesheet brings the reset, chrome, hold-ring, and form base
+   styles used by the site. Wherever it touches a timer element it would
+   otherwise change the pre-shared rendering; these rules re-pin the
+   timer's own choices (order matters: this file loads after common). */
+
+body { line-height: normal; }
+
+.app-header {
+  background: transparent;
+  border-bottom: none;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+.brand { display: block; }
+
+.hold-track { width: auto; }          /* shared ring is 1.2rem; the timer bar stretches */
+.hold-fill { transform: none; border-radius: 0; }   /* shared ring starts scaleX(0) */
+
+.ghost-btn:hover { border-color: var(--border-strong); }
+
+.theme-opt:hover,
+.theme-opt.active { background: var(--surface); }
+.theme-name { flex: 0 1 auto; font-size: inherit; }
+
+input, select, textarea, button {     /* back to the UA defaults the timer always had */
+  font-family: revert;
+  font-size: revert;
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: revert;
+  outline-offset: revert;
+}
+
 
 * { box-sizing: border-box; }
 
@@ -31,17 +67,9 @@ body {
 /* ---------- Themes ---------- */
 
 body[data-theme="calm"] {
-  --bg: #f2f6f8;
-  --surface: #ffffff;
-  --surface-2: #e9eff3;
-  --text: #33414d;
-  --text-dim: #6b7c8a;
-  --border: #d5dfe6;
-  --border-strong: #b9c8d3;
   --work: #4d84a6;
   --earn: #628f5d;
   --on-accent: #ffffff;
-  --accent: #4d84a6;
   --warn-bg: #fdf3dd;
   --warn-text: #7a5c1e;
   --warn-border: #eeddb3;
@@ -50,17 +78,9 @@ body[data-theme="calm"] {
 }
 
 body[data-theme="low"] {
-  --bg: #eef1f3;
-  --surface: #f6f8f9;
-  --surface-2: #eaedef;
-  --text: #5b6570;
-  --text-dim: #838d97;
-  --border: #e2e6e9;
-  --border-strong: #d3d9dd;
   --work: #94b4c3;
   --earn: #a9c5a5;
   --on-accent: #ffffff;
-  --accent: #94b4c3;
   --warn-bg: #f4efe3;
   --warn-text: #8a8172;
   --warn-border: #e8e0cf;
@@ -69,17 +89,9 @@ body[data-theme="low"] {
 }
 
 body[data-theme="high"] {
-  --bg: #000000;
-  --surface: #0b0d10;
-  --surface-2: #16191e;
-  --text: #ffffff;
-  --text-dim: #d0d6dc;
-  --border: #ffffff;
-  --border-strong: #ffffff;
   --work: #56e0ff;
   --earn: #b7ff5e;
   --on-accent: #000000;
-  --accent: #56e0ff;
   --warn-bg: #2a2105;
   --warn-text: #ffe066;
   --warn-border: #ffe066;
@@ -88,17 +100,9 @@ body[data-theme="high"] {
 }
 
 body[data-theme="dark"] {
-  --bg: #151a20;
-  --surface: #1e242b;
-  --surface-2: #252c34;
-  --text: #e7edf2;
-  --text-dim: #9aa7b3;
-  --border: #323b45;
-  --border-strong: #46525e;
   --work: #6fa9c7;
   --earn: #8fbf88;
   --on-accent: #0d1117;
-  --accent: #6fa9c7;
   --warn-bg: #3a3320;
   --warn-text: #f0dca6;
   --warn-border: #5c5030;
@@ -107,17 +111,9 @@ body[data-theme="dark"] {
 }
 
 body[data-theme="lavender"] {
-  --bg: #f5f3fb;
-  --surface: #ffffff;
-  --surface-2: #ece8f7;
-  --text: #3d3a52;
-  --text-dim: #75708f;
-  --border: #ddd7ef;
-  --border-strong: #c5bce6;
   --work: #7a6fc0;
   --earn: #6a9a76;
   --on-accent: #ffffff;
-  --accent: #7a6fc0;
   --warn-bg: #fdf3dd;
   --warn-text: #7a5c1e;
   --warn-border: #eeddb3;
@@ -126,17 +122,9 @@ body[data-theme="lavender"] {
 }
 
 body[data-theme="mint"] {
-  --bg: #eef8f3;
-  --surface: #ffffff;
-  --surface-2: #e0f0e8;
-  --text: #2f4640;
-  --text-dim: #648076;
-  --border: #cfe6dc;
-  --border-strong: #aed2c3;
   --work: #35837e;
   --earn: #6f9a58;
   --on-accent: #ffffff;
-  --accent: #35837e;
   --warn-bg: #fdf3dd;
   --warn-text: #7a5c1e;
   --warn-border: #eeddb3;
@@ -145,17 +133,9 @@ body[data-theme="mint"] {
 }
 
 body[data-theme="peach"] {
-  --bg: #fdf6ef;
-  --surface: #fffdfb;
-  --surface-2: #f9ece0;
-  --text: #4d3f34;
-  --text-dim: #8a7566;
-  --border: #f0e0d0;
-  --border-strong: #e0c9b4;
   --work: #c26a3c;
   --earn: #7a9a5a;
   --on-accent: #ffffff;
-  --accent: #c26a3c;
   --warn-bg: #fdf3dd;
   --warn-text: #7a5c1e;
   --warn-border: #eeddb3;
@@ -164,17 +144,9 @@ body[data-theme="peach"] {
 }
 
 body[data-theme="rose"] {
-  --bg: #fdf4f6;
-  --surface: #ffffff;
-  --surface-2: #f9e7ec;
-  --text: #4f3540;
-  --text-dim: #8c6b78;
-  --border: #f2dae1;
-  --border-strong: #e4c2cd;
   --work: #c25f7e;
   --earn: #6f9466;
   --on-accent: #ffffff;
-  --accent: #c25f7e;
   --warn-bg: #fdf3dd;
   --warn-text: #7a5c1e;
   --warn-border: #eeddb3;
@@ -183,17 +155,9 @@ body[data-theme="rose"] {
 }
 
 body[data-theme="ocean"] {
-  --bg: #eef8fa;
-  --surface: #ffffff;
-  --surface-2: #dff0f4;
-  --text: #2c4750;
-  --text-dim: #5f7f89;
-  --border: #cfe6eb;
-  --border-strong: #aed3dc;
   --work: #2f87a3;
   --earn: #5f9a6a;
   --on-accent: #ffffff;
-  --accent: #2f87a3;
   --warn-bg: #fdf3dd;
   --warn-text: #7a5c1e;
   --warn-border: #eeddb3;
@@ -202,17 +166,9 @@ body[data-theme="ocean"] {
 }
 
 body[data-theme="midnight"] {
-  --bg: #0a0f1e;
-  --surface: #121a30;
-  --surface-2: #1a2440;
-  --text: #e3e9f7;
-  --text-dim: #9aa6c4;
-  --border: #2c3a5e;
-  --border-strong: #415480;
   --work: #6fa8ff;
   --earn: #67d6a5;
   --on-accent: #060a14;
-  --accent: #6fa8ff;
   --warn-bg: #1c2745;
   --warn-text: #a9c6f5;
   --warn-border: #3d5585;
@@ -221,17 +177,9 @@ body[data-theme="midnight"] {
 }
 
 body[data-theme="warm"] {
-  --bg: #211a14;
-  --surface: #2b221a;
-  --surface-2: #352a20;
-  --text: #f0e6da;
-  --text-dim: #b3a291;
-  --border: #4a3c2e;
-  --border-strong: #63513e;
   --work: #d9a05f;
   --earn: #93b877;
   --on-accent: #241a10;
-  --accent: #d9a05f;
   --warn-bg: #3a3020;
   --warn-text: #f0dca6;
   --warn-border: #5c4c2e;
@@ -1500,3 +1448,4 @@ body[data-current="earn"] .main-btn { background: var(--earn); }
   .xp-cloud-2 { left: 55%; }
   .xp-cloud-3 { left: 30%; }
 }
+

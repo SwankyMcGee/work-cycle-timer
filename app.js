@@ -28,24 +28,13 @@ const DEFAULTS = {
   repeatMode: 'off'              // 'off' | 'all' | 'one'
 };
 
-const STORAGE_KEY = 'workCycleTimer.settings.v1';
+const STORAGE_KEY = ToolshedCommon.STORAGE_KEY;
 
 /* Color palettes offered in Settings → Display. chips = [page background,
-   card, text, accent/work dial, earn dial] — keep in step with the
-   matching body[data-theme] block in styles.css. */
-const THEMES = [
-  { id: 'calm',     name: 'Calm (soft blue & green)',   chips: ['#f2f6f8', '#ffffff', '#33414d', '#4d84a6', '#628f5d'] },
-  { id: 'lavender', name: 'Lavender (soft purple)',     chips: ['#f5f3fb', '#ffffff', '#3d3a52', '#7a6fc0', '#6a9a76'] },
-  { id: 'mint',     name: 'Mint (fresh green)',         chips: ['#eef8f3', '#ffffff', '#2f4640', '#35837e', '#6f9a58'] },
-  { id: 'peach',    name: 'Peach (warm apricot)',       chips: ['#fdf6ef', '#fffdfb', '#4d3f34', '#c26a3c', '#7a9a5a'] },
-  { id: 'rose',     name: 'Rose (soft pink)',           chips: ['#fdf4f6', '#ffffff', '#4f3540', '#c25f7e', '#6f9466'] },
-  { id: 'ocean',    name: 'Ocean (aqua blue)',          chips: ['#eef8fa', '#ffffff', '#2c4750', '#2f87a3', '#5f9a6a'] },
-  { id: 'low',      name: 'Low contrast (very gentle)', chips: ['#eef1f3', '#f6f8f9', '#5b6570', '#94b4c3', '#a9c5a5'] },
-  { id: 'high',     name: 'High contrast',              chips: ['#000000', '#0b0d10', '#ffffff', '#56e0ff', '#b7ff5e'] },
-  { id: 'dark',     name: 'Dark (slate)',               chips: ['#151a20', '#1e242b', '#e7edf2', '#6fa9c7', '#8fbf88'] },
-  { id: 'midnight', name: 'Midnight (deep blue)',       chips: ['#0a0f1e', '#121a30', '#e3e9f7', '#6fa8ff', '#67d6a5'] },
-  { id: 'warm',     name: 'Warm dark (sepia)',          chips: ['#211a14', '#2b221a', '#f0e6da', '#d9a05f', '#93b877'] }
-];
+   card, text, accent/work dial, earn dial] — shared with the hub site;
+   the base palette CSS vars live in toolshed-common.css, the timer-only
+   vars (--work, --earn, --warn-*, …) in the body[data-theme] blocks below. */
+const THEMES = ToolshedCommon.THEMES;
 
 function loadSettings() {
   let s = Object.assign({}, DEFAULTS);
