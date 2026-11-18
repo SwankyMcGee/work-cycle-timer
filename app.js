@@ -7,6 +7,10 @@
 
 'use strict';
 
+/* Right-click menu off: holding a hold button is read as a long-press by
+   some touchscreens, which pops the context menu over the button. */
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
 /* ---------- Defaults & persistence (settings only) ---------- */
 
 const DEFAULTS = {
