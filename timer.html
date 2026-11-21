@@ -70,32 +70,55 @@
             <input type="range" id="mediaVol" min="0" max="100" step="5" aria-label="Music volume">
           </label>
         </div>
-        <button id="fsBtn" class="gear-btn fs-btn" type="button"
-                title="Hold for 1 second to fill the screen"
-                aria-label="Fullscreen — hold 1 second to fill the screen">
-          <svg id="fsEnterIcon" viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true">
-            <path d="M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zM4 14h2v4h4v2H4v-6zm14 0h2v6h-6v-2h4v-4z"/>
-          </svg>
-          <svg id="fsExitIcon" viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true" style="display:none">
-            <path d="M4 4h5v5H4V4zm11 0h5v5h-5V4zM4 15h5v5H4v-5zm11 0h5v5h-5v-5z"/>
-          </svg>
-          <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
-        </button>
-        <button id="homeBtn" class="gear-btn home-btn" type="button"
-                title="Hold for 1 second to go to The Learning Toolshed home"
-                aria-label="Home — hold 1 second for The Learning Toolshed home">
-          <svg viewBox="0 0 24 24" width="23" height="23" fill="currentColor" aria-hidden="true">
-            <path d="M12 3.5 2.5 12v8h19v-8z"/>
-          </svg>
-          <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
-        </button>
-        <button id="gearBtn" class="gear-btn" title="Hold for 3 seconds to open settings"
-                aria-label="Hold for 3 seconds to open settings">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-            <path d="M19.14 12.94a7.07 7.07 0 0 0 .06-.94 7.07 7.07 0 0 0-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.61-.22l-2.39.96a7.2 7.2 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.58.24-1.12.55-1.62.94l-2.39-.96a.5.5 0 0 0-.61.22L2.65 8.84a.5.5 0 0 0 .12.64l2.03 1.58a7.07 7.07 0 0 0 0 1.88l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.39.31.61.22l2.39-.96c.5.39 1.04.7 1.62.94l.36 2.54c.04.24.25.42.5.42h3.84c.25 0 .46-.18.5-.42l.36-2.54a7.2 7.2 0 0 0 1.62-.94l2.39.96c.22.09.48 0 .61-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/>
-          </svg>
-          <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
-        </button>
+        <div class="header-controls" role="group" aria-label="Tool controls">
+          <button id="soundBtn" class="hold-btn sound-btn" type="button"
+                  title="Hold for 1 second to turn the chime off"
+                  aria-label="Chime on — hold 1 second to turn it off">
+            <span class="hold-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+              </svg>
+            </span>
+            <span class="hold-label">Chime: on</span>
+            <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
+          </button>
+          <button id="fsBtn" class="hold-btn fs-btn" type="button"
+                  title="Hold for 1 second to fill the screen"
+                  aria-label="Fullscreen — hold 1 second to fill the screen">
+            <span class="hold-icon" aria-hidden="true">
+              <svg id="fsEnterIcon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zM4 14h2v4h4v2H4v-6zm14 0h2v6h-6v-2h4v-4z"/>
+              </svg>
+              <svg id="fsExitIcon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display:none">
+                <path d="M4 4h5v5H4V4zm11 0h5v5h-5V4zM4 15h5v5H4v-5zm11 0h5v5h-5v-5z"/>
+              </svg>
+            </span>
+            <span class="hold-label">Fullscreen</span>
+            <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
+          </button>
+          <button id="gearBtn" class="hold-btn settings-btn" type="button"
+                  title="Hold for 3 seconds to open settings"
+                  aria-label="Settings — hold 3 seconds">
+            <span class="hold-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M19.43 12.98c.04-.32.07-.65.07-.98s-.03-.66-.07-.98l2.11-1.65a.5.5 0 0 0 .12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a7.3 7.3 0 0 0-1.69-.98l-.38-2.65A.5.5 0 0 0 14 2h-4a.5.5 0 0 0-.49.42l-.38 2.65c-.61.25-1.17.58-1.69.98l-2.49-1a.5.5 0 0 0-.61.22l-2 3.46a.5.5 0 0 0 .12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65a.5.5 0 0 0-.12.64l2 3.46c.13.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.05.24.26.42.49.42h4c.24 0 .45-.18.49-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1c.22.08.48 0 .61-.22l2-3.46a.5.5 0 0 0-.12-.64l-2.11-1.65zM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5z"/>
+              </svg>
+            </span>
+            <span class="hold-label">Settings</span>
+            <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
+          </button>
+          <button id="homeBtn" class="hold-btn home-btn" type="button"
+                  title="Hold for 1 second to go to The Learning Toolshed home"
+                  aria-label="Home — hold 1 second for The Learning Toolshed home">
+            <span class="hold-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 3.2 2.6 11.5V21h6.6v-6.2h5.6V21h6.6v-9.5z"/>
+              </svg>
+            </span>
+            <span class="hold-label">Home</span>
+            <span class="hold-track" aria-hidden="true"><span class="hold-fill"></span></span>
+          </button>
+        </div>
       </div>
     </header>
 

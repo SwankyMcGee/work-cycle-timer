@@ -1192,7 +1192,7 @@ bindCheck('warn120', 'warn120');
 bindCheck('warn60', 'warn60');
 bindCheck('warn30', 'warn30');
 
-bindCheck('soundOn', 'soundOn');
+bindCheck('soundOn', 'soundOn', syncSoundUi);
 bindSelect('soundType', 'soundType');
 bindRange('soundVol', 'soundVol', applySettings);
 
@@ -1234,6 +1234,7 @@ $('resetSettings').addEventListener('click', () => {
   workDone = 0;   // progress toward the Earn restarts with the defaults
   saveSettings();
   syncSettingsInputs();
+  syncSoundUi();   // header chime button follows the defaults too
   applySettings();
   populateMedia();
   applyVideo();
@@ -1944,6 +1945,36 @@ makeHoldable($('skipBtn'), 1000, onSkip);
 makeHoldable($('homeBtn'), 1000, () => { window.location.href = HOME_URL; });
 makeHoldable(gearBtn, 3000, openSettings);
 
+/* ---------- Header chime toggle (hold 1 s) ----------
+   The same right-hand cluster every Toolshed tool shows — and the
+   button always says out loud whether the chime is on. */
+function syncSoundUi() {
+  const btn = $('soundBtn');
+  if (!btn) return;
+  const on = settings.soundOn;
+  const state = on ? 'Chime: on' : 'Chime: off';
+  const label = btn.querySelector('.hold-label');
+  if (label) label.textContent = state;
+  btn.title = state + ' — hold 1 second to turn it ' + (on ? 'off' : 'on');
+  btn.setAttribute('aria-label', btn.title);
+  btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+}
+
+function toggleSound() {
+  settings.soundOn = !settings.soundOn;
+  saveSettings();
+  const chk = $('soundOn');
+  if (chk) chk.checked = settings.soundOn;   // keep the settings panel in step
+  syncSoundUi();
+  if (settings.soundOn) playSound('transition');   // confirm you turned it on
+}
+
+makeHoldable($('soundBtn'), 1000, toggleSound);
+syncSoundUi();
+
+/* Footer — the shared Toolshed workbench scene + rotating shed wisdom. */
+ToolshedCommon.injectFooter();
+
 /* ---------- Fullscreen (header ⛶, hold 1 s) ----------
    Fills the screen with the tool (the :fullscreen rules in styles.css
    keep the header on top, center the tool below it and grow the dials).
@@ -1998,6 +2029,8 @@ function syncFullscreenUi() {
   btn.setAttribute('aria-label', on
     ? 'Leave fullscreen (hold 1 second)'
     : 'Fullscreen — hold 1 second to fill the screen');
+  const label = btn.querySelector('.hold-label');
+  if (label) label.textContent = on ? 'Exit fullscreen' : 'Fullscreen';
   if (!on) unlockOrientation();   // Esc leaving fullscreen counts too
 }
 

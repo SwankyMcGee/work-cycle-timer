@@ -16,12 +16,13 @@ body { line-height: normal; }
   background: transparent;
   border-bottom: none;
   padding: 0;
-  flex-wrap: nowrap;
 }
 .brand { display: block; }
 
 .hold-track { width: auto; }          /* shared ring is 1.2rem; the timer bar stretches */
 .hold-fill { transform: none; border-radius: 0; }   /* shared ring starts scaleX(0) */
+.hold-icon { display: inline-flex; align-items: center; }
+.hold-icon svg { display: block; }
 
 .ghost-btn:hover { border-color: var(--border-strong); }
 
@@ -327,36 +328,32 @@ body.flash-enabled.flash-active .flash-overlay {
 
 .title-input:focus { outline: none; }
 
-/* ---------- Hold-to-activate (all kid-safe buttons) ----------
-   Each holdable button sets --hold-dur (3s gear, 1.5s the rest);
-   the .holding class runs the fill for that long.             */
+/* ---------- Hold-to-activate header cluster (Chime · Fullscreen ·
+   Settings · Home) ----------
+   The same pill buttons every other Toolshed tool shows, in the same
+   order at the right edge of the header — toolshed-common.css brings
+   the base .hold-btn pill, icon, label and ring; these rules pin the
+   timer's own hold durations and keep the header free to wrap.      */
 
-.gear-btn {
-  --hold-dur: 3s;
-  position: relative;
-  flex: none;
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  border: 1.5px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  cursor: pointer;
-  touch-action: none;
-  user-select: none;
-  -webkit-user-select: none;
+.app-header { flex-wrap: wrap; }
+
+.app-header .header-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .4rem;
 }
 
-.gear-btn:hover { border-color: var(--border-strong); }
-.gear-btn.holding { border-color: var(--accent); color: var(--accent); }
+.hold-btn {
+  position: relative;
+  overflow: hidden;
+  flex: none;
+  --hold-dur: 1s;
+}
 
-/* Header 🏠 home button — same box as the gear, but a 1-second hold */
-.home-btn { --hold-dur: 1s; }
-
-/* Header ⛶ fullscreen button — also a 1-second hold */
-.fs-btn { --hold-dur: 1s; }
+/* The settings gear is the cluster's only 3-second hold;
+   chime / fullscreen / home are all 1-second holds. */
+.hold-btn.settings-btn { --hold-dur: 3s; }
 
 /* ---------- Fullscreen ----------
    ⛶ expands the whole tool to the screen: the app drops its width cap
@@ -428,9 +425,14 @@ body.flash-enabled.flash-active .flash-overlay {
 .header-tools {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;          /* media bar and control cluster each take
+                               their own line when they can't fit side
+                               by side — nothing ever clips off-screen */
+  justify-content: flex-end;
   gap: .6rem;
   margin-left: auto;
-  flex: none;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .media-controls {
@@ -465,8 +467,7 @@ body.flash-enabled.flash-active .flash-overlay {
 .tool-btn:hover { border-color: var(--border-strong); }
 .tool-btn.holding { border-color: var(--accent); color: var(--accent); }
 
-.tool-btn:focus-visible,
-.gear-btn:focus-visible {
+.tool-btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
